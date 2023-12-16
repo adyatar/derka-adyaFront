@@ -1,92 +1,92 @@
-<nav class="bg-cyan-700">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
-          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-            <span class="absolute -inset-0.5"></span>
-            <span class="sr-only">Open main menu</span>
-            <!--
-              Icon when menu is closed.
-  
-              Menu open: "hidden", Menu closed: "block"
-            -->
-            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-            <!--
-              Icon when menu is open.
-  
-              Menu open: "block", Menu closed: "hidden"
-            -->
-            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-         <div class="flex flex-shrink-0 items-center">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          </div>
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
-            </div>
-          </div>
-        </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <span class="absolute -inset-1.5"></span>
-            <span class="sr-only">View notifications</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-          </button>
-  
-          <!-- Profile dropdown -->
-          <div class="relative ml-3">
-            <div>
-              <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+<header class="antialiased sticky top-0 z-10">
+  <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <div class="flex flex-wrap justify-between items-center">
+          <div class="flex justify-start items-center">
+              <button aria-expanded="true" aria-controls="sidebar" class="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                <svg class="w-[18px] h-[18px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/></svg>
+                <span class="sr-only">Toggle sidebar</span>
               </button>
+              <a href="/" class="flex mr-4">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">e-ADK</span>
+              </a>
             </div>
-  
-            <!--
-              Dropdown menu, show/hide based on menu state.
-  
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
-            <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-              <!-- Active: "bg-gray-100", Not Active: "" -->
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-            </div>
+              <div class="flex-1 flex justify-center items-center">
+                <form action="#" method="GET" class="lg:block hidden">
+                  <label for="topbar-search" class="sr-only">Search</label>
+                  <div class="relative mt-1 lg:w-96">
+                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/> </svg>
+                    </div>
+                    <input type="text" name="email" id="topbar-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search">
+                  </div>
+                </form>
+              </div>
+          <div class="flex justify-end items-center">
+              <button id="toggleSidebarMobileSearch" type="button" class="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  <span class="sr-only">Search</span>
+                  <!-- Search icon -->
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+              </button>
+              <button type="button" class="mx-1 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" aria-label="View cart">
+                <!-- SVG for Cart Icon -->
+                <svg width="2rem" height="2rem" viewBox="0 0 40 40" fill="currentColor"><path clip-rule="evenodd" d="M25.5 14.82V13.16C25.4414 11.8295 24.8717 10.5729 23.9095 9.6521C22.9473 8.7313 21.6668 8.21735 20.335 8.21735C19.0032 8.21735 17.7228 8.7313 16.7606 9.6521C15.7983 10.5729 15.2286 11.8295 15.17 13.16V14.82H10V25.95C10 27.1709 10.4844 28.342 11.3467 29.2062C12.2091 30.0705 13.3791 30.5573 14.6 30.56H26.0701C27.2919 30.5574 28.4629 30.0708 29.3269 29.2068C30.1909 28.3429 30.6774 27.1718 30.6801 25.95V14.82H25.5ZM17.17 13.16C17.2155 12.3514 17.5688 11.5908 18.1573 11.0344C18.7459 10.478 19.5251 10.168 20.335 10.168C21.1449 10.168 21.9241 10.478 22.5127 11.0344C23.1013 11.5908 23.4545 12.3514 23.5 13.16V14.82H17.17V13.16ZM28.6801 25.95C28.6801 26.6422 28.405 27.3061 27.9155 27.7956C27.4261 28.285 26.7623 28.56 26.0701 28.56H14.6C14.2578 28.56 13.9188 28.4924 13.6027 28.3611C13.2866 28.2299 12.9996 28.0374 12.758 27.795C12.5164 27.5525 12.3251 27.2647 12.1951 26.9481C12.065 26.6315 11.9987 26.2923 12 25.95V16.8H15.17V20.62H17.17V16.8H23.5V20.62H25.5V16.8H28.6801V25.95Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+            </button>
+
+            <button type="button" class="mx-1 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" aria-label="Login">
+              <!-- SVG for Cart Icon -->
+              <svg width="2rem" height="2rem" viewBox="-8 -8 32 40" fill="currentColor"><path clip-rule="evenodd" d="M13.5782 10.3112C14.5521 9.6117 15.2791 8.62125 15.6543 7.48238C16.0295 6.34352 16.0337 5.11498 15.6663 3.97357C15.2989 2.83215 14.5789 1.83674 13.6097 1.1306C12.6406 0.424465 11.4724 0.0440063 10.2733 0.0440063C9.07422 0.0440063 7.9061 0.424465 6.93698 1.1306C5.96787 1.83674 5.24784 2.83215 4.88044 3.97357C4.51303 5.11498 4.51719 6.34352 4.89243 7.48238C5.26766 8.62125 5.99451 9.6117 6.96845 10.3112C4.93144 11.0026 3.16174 12.3138 1.90708 14.0612C0.652423 15.8086 -0.0242772 17.9046 -0.0283203 20.0557V21H20.5467V20.0557C20.5447 17.9081 19.8721 15.8146 18.6228 14.0676C17.3735 12.3207 15.6099 11.0074 13.5782 10.3112ZM10.2828 1.88849C11.0298 1.88849 11.76 2.11002 12.3811 2.52504C13.0023 2.94006 13.4864 3.52993 13.7723 4.22009C14.0581 4.91024 14.133 5.66966 13.9872 6.40233C13.8415 7.13499 13.4818 7.80798 12.9535 8.3362C12.4253 8.86442 11.7523 9.22413 11.0196 9.36986C10.287 9.5156 9.52761 9.44082 8.83746 9.15495C8.14731 8.86908 7.5574 8.38498 7.14238 7.76386C6.72736 7.14274 6.50578 6.41249 6.50578 5.66547C6.50578 4.66375 6.90376 3.70306 7.61208 2.99474C8.32041 2.28642 9.28104 1.88849 10.2828 1.88849ZM1.93567 19.1115C2.17448 17.0653 3.15659 15.178 4.69544 13.8083C6.23429 12.4386 8.22263 11.6819 10.2828 11.6819C12.3429 11.6819 14.3313 12.4386 15.8702 13.8083C17.409 15.178 18.3911 17.0653 18.63 19.1115H1.93567Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+          </button>
+            
+            
+           <!--   <button (click)="toggleDropdown()" type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="dropdown-button">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+              </button>
+              <div  [class.hidden]="!isDropdownVisible" class="top-full right-6 hidden absolute z-50  w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
+                  <div class="py-3 px-4">
+                      <span class="block text-sm font-semibold text-gray-900 dark:text-white">Neil sims</span>
+                      <span class="block text-sm text-gray-500 truncate dark:text-gray-400">nameflowbite.com</span>
+                  </div>
+                  <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
+                      <li>
+                          <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My profile</a>
+                      </li>
+                      <li>
+                          <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Account settings</a>
+                      </li>
+                  </ul>
+                  <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
+                        <li>
+                          <a href="#" class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                              <svg class="mr-2 w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18"><path d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z"/></svg>
+                              My likes
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <svg class="mr-2 w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"> <path d="m1.56 6.245 8 3.924a1 1 0 0 0 .88 0l8-3.924a1 1 0 0 0 0-1.8l-8-3.925a1 1 0 0 0-.88 0l-8 3.925a1 1 0 0 0 0 1.8Z"/> <path d="M18 8.376a1 1 0 0 0-1 1v.163l-7 3.434-7-3.434v-.163a1 1 0 0 0-2 0v.786a1 1 0 0 0 .56.9l8 3.925a1 1 0 0 0 .88 0l8-3.925a1 1 0 0 0 .56-.9v-.786a1 1 0 0 0-1-1Z"/> <path d="M17.993 13.191a1 1 0 0 0-1 1v.163l-7 3.435-7-3.435v-.163a1 1 0 1 0-2 0v.787a1 1 0 0 0 .56.9l8 3.925a1 1 0 0 0 .88 0l8-3.925a1 1 0 0 0 .56-.9v-.787a1 1 0 0 0-1-1Z"/> </svg> 
+                            Collections
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#" class="flex justify-between items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                              <span class="flex items-center">
+                                  <svg class="mr-2 w-4 h-4 text-primary-600 dark:text-primary-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="m7.164 3.805-4.475.38L.327 6.546a1.114 1.114 0 0 0 .63 1.89l3.2.375 3.007-5.006ZM11.092 15.9l.472 3.14a1.114 1.114 0 0 0 1.89.63l2.36-2.362.38-4.475-5.102 3.067Zm8.617-14.283A1.613 1.613 0 0 0 18.383.291c-1.913-.33-5.811-.736-7.556 1.01-1.98 1.98-6.172 9.491-7.477 11.869a1.1 1.1 0 0 0 .193 1.316l.986.985.985.986a1.1 1.1 0 0 0 1.316.193c2.378-1.3 9.889-5.5 11.869-7.477 1.746-1.745 1.34-5.643 1.01-7.556Zm-3.873 6.268a2.63 2.63 0 1 1-3.72-3.72 2.63 2.63 0 0 1 3.72 3.72Z"/></svg>
+                                  Pro version
+                              </span>
+                              <svg class="w-2.5 h-2.5 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
+                          </a>
+                      </li>
+                  </ul>
+                  <ul class="py-1 text-gray-500 dark:text-gray-400" aria-labelledby="dropdown">
+                      <li>
+                          <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                      </li>
+                  </ul>
+              </div> -->
           </div>
-        </div>
       </div>
-    </div>
-  
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
-      </div>
-    </div>
   </nav>
-  
+</header>

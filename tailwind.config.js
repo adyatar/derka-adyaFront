@@ -7,7 +7,6 @@ module.exports = {
     extend: {},
     fontFamily: {
       'lato': ['"Lato"', 'sans-serif']
-
     }
   },
   plugins: [],

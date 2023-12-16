@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeroSectionComponent } from './components/hero-section/hero-section.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HeroSectionComponent } from './components/hero-section/hero-section.com
     HeroSectionComponent
   ],
   imports: [
+    NgOptimizedImage,
     BrowserModule,
     AppRoutingModule
   ],
