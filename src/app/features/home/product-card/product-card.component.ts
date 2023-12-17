@@ -24,22 +24,20 @@ export class ProductCardComponent implements OnInit {
     { img: '../assets/images/ps5console.png',brand:'PlayStation',name:'Ps5 1Tb',price:'$ 800.00',discount:'' },
     { img: '../assets/images/ps5manette.jpg',brand:'PlayStation',name:'Ps5 Remote Army',price:'$ 60.00',discount:'' },
   ];
-  slideConfig = {dots:true,loop:false,draggable:false, slidesToShow: 4, slidesToScroll: 4,arrows:false,mobileFirst: true,customPaging: function (slider:any, i:any) {
-    return '<button class="custom-dot">' + (i + 1) + '</button>';
-  },
+  slideConfig = {dots:true,loop:false,draggable:false,arrows:false,mobileFirst: true,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
         slidesToShow: 4,
-        slidesToScroll: 1,
+        slidesToScroll: 4,
       },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 2,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
       },
     },
     {
@@ -49,7 +47,8 @@ export class ProductCardComponent implements OnInit {
         slidesToScroll: 1,
       },
     },
-  ],};
+  ],
+};
  
 
 }

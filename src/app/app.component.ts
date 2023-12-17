@@ -7,7 +7,6 @@ import { initFlowbite } from 'flowbite';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit,OnDestroy {
   private themeSubscription!: Subscription;
