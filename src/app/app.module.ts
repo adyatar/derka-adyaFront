@@ -10,6 +10,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { FeatureSectionComponent } from './components/feature-section/feature-section.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { ProducDetailComponent } from './produc-detail/produc-detail.component';
 
 
 
@@ -20,7 +21,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     FooterComponent,
     HeroSectionComponent,
     FeatureSectionComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProducDetailComponent
   ],
   imports: [
     NgOptimizedImage,
