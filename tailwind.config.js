@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}"
+    "./src/**/*.{html,ts}",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {},
@@ -9,6 +10,9 @@ module.exports = {
       'lato': ['"Lato"', 'sans-serif']
     }
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'),
+  ],
+  darkMode: 'class',
 }
 

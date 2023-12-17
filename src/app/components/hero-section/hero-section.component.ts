@@ -1,4 +1,12 @@
 import { Component } from '@angular/core';
+import { Carousel } from 'flowbite';
+import type {
+    CarouselItem,
+    CarouselOptions,
+    CarouselInterface,
+} from 'flowbite';
+import type { InstanceOptions } from 'flowbite';
+
 
 @Component({
   selector: 'app-hero-section',
@@ -6,5 +14,7 @@ import { Component } from '@angular/core';
   styleUrl: './hero-section.component.css'
 })
 export class HeroSectionComponent {
+
+
 
 }
