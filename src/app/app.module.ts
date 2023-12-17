@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { FeatureSectionComponent } from './components/feature-section/feature-section.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgOptimizedImage,
     BrowserModule,
     AppRoutingModule,
-    SlickCarouselModule
+    SlickCarouselModule,
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

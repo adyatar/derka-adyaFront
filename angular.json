@@ -54,13 +54,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/slick-carousel/slick/slick.css",
-              "node_modules/slick-carousel/slick/slick-theme.css"
-            ],
-            "scripts": [
-              "node_modules/slick-carousel/slick/slick.min.js",
-              "node_modules/jquery/dist/jquery.min.js"
-            ]
+              "node_modules/slick-carousel/slick/slick.css"
+          ],
+          "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
+          ]
           },
           "configurations": {
             "production": {

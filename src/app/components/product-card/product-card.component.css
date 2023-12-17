@@ -1,0 +1,12 @@
+.custom-dot {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50%;
+    /* Other styles as needed */
+    display: none !important;
+  }
+
+.slick-dots {
+display:none !important;
+}
