@@ -1,11 +1,4 @@
 import { Component } from '@angular/core';
-import { Carousel } from 'flowbite';
-import type {
-    CarouselItem,
-    CarouselOptions,
-    CarouselInterface,
-} from 'flowbite';
-import type { InstanceOptions } from 'flowbite';
 
 
 @Component({
@@ -15,20 +8,12 @@ import type { InstanceOptions } from 'flowbite';
 })
 export class HeroSectionComponent {
 
+  ngOnInit(): void { }
   slides = [
     { img: 'assets/images/watch.png', alt: 'Watch' },
-  { img: 'assets/images/hero.png', alt: 'Hero' }
-    // ... add more slides as needed ...
+    { img: 'assets/images/hero.png', alt: 'Hero' }
   ];
 
-  slideConfig = {
-    "slidesToShow": 1,
-    "slidesToScroll": 1,
-    "dots": false,
-    "infinite": false,
-    "autoplay": true,
-    "autoplaySpeed": 2000
-    // ... other slick-carousel configurations ...
-  };
+  slideConfig = {dots:false,loop:true,draggable:false,arrows:false,mobileFirst: true,autoplay: true,autoplaySpeed: 3000,speed: 600,cssEase: 'linear',slidesToShow: 1,slidesToScroll: 1,};
 
 }

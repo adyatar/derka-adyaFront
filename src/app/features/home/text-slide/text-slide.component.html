@@ -1,0 +1,10 @@
+<ngx-slick-carousel class="carousel pt-16" 
+#slickModal="slick-carousel" 
+[config]="slideConfig" 
+>
+<div ngxSlickItem *ngFor="let slide of slides" class="slide bg-bgColor ">
+  <div class="m-4 text-4xl font-extrabold uppercase w-full">
+     <span> {{slide.text}}</span>
+  </div>
+</div>
+</ngx-slick-carousel>
