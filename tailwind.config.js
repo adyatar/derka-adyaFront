@@ -13,6 +13,15 @@ module.exports = {
         "bgColor": '#f1f4f4',
         "textSlider": '#7bdad3',
       },
+      animation: {
+        RightToLeft: 'RightToLeft 20s infinite linear',
+      },
+      keyframes:{
+        RightToLeft: {
+          'from': { transform: 'translateX(0%)' },
+          'to': { transform: 'translateX(-50%)' },
+        },
+      },
     },
     fontFamily: {
       'lato': ['"Lato"', 'sans-serif']
