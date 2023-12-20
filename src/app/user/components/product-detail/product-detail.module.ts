@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProducDetailComponent } from './produc-detail/produc-detail.component';
+import { ProducDetailComponent } from './produc-detail.component';
 
 
 

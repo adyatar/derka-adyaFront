@@ -24,6 +24,7 @@ export class ProductCardComponent implements OnInit {
     { img: 'assets/images/ps4.png',brand:'PlayStation',name:'Ps4 Slim 500Go',price:'$ 390.00',discount:'' },
     { img: 'assets/images/ps5console.png',brand:'PlayStation',name:'Ps5 1Tb',price:'$ 800.00',discount:'' },
     { img: 'assets/images/ps5manette.jpg',brand:'PlayStation',name:'Ps5 Remote Army',price:'$ 60.00',discount:'' },
+    
   ];
   slideConfig = {dots:true,loop:false,draggable:false,arrows:false,mobileFirst: true,
   responsive: [
