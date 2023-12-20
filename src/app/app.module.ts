@@ -10,10 +10,10 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
-  
+    AppComponent 
   ],
   imports: [
     NgOptimizedImage,
