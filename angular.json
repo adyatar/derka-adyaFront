@@ -54,13 +54,9 @@
             ],
             "styles": [
               "src/styles.css",
-<<<<<<< HEAD
-              "node_modules/slick-carousel/slick/slick.css",
+             "node_modules/slick-carousel/slick/slick.css",
               "node_modules/slick-carousel/slick/slick-theme.css"
-=======
-              "node_modules/slick-carousel/slick/slick.css"
-              
->>>>>>> 69c44f94510ad507db85c6b082cf251c92e244be
+
           ],
           "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

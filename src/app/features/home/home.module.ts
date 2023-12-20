@@ -9,13 +9,19 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
+
 @NgModule({
   declarations: [
     HomeComponent,
     FeatureSectionComponent,
     HeroSectionComponent,
     ProductCardComponent
+    
   ],
+  exports:[HomeComponent,
+    FeatureSectionComponent,
+    HeroSectionComponent,
+    ProductCardComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
