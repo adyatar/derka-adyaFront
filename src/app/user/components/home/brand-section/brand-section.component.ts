@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-brand-section',
   templateUrl: './brand-section.component.html',
   styleUrl: './brand-section.component.css',
-  standalone:true
+  standalone:true,
+  imports:[SlickCarouselModule]
 })
 export class BrandSectionComponent {
 
