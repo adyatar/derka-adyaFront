@@ -29,6 +29,8 @@ module.exports = {
   },
   plugins: [
     require('flowbite/plugin'),
+    require('autoprefixer'),
+    require('tailwindcss'),
   ],
   darkMode: 'class',
 }

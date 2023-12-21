@@ -1,7 +1,9 @@
- <div class="m-4  dark:bg-white bg-slate-700 shadow-md rounded-xl duration-500 hover:scale-102 hover:shadow-xl">
+ <div class="dark:bg-white bg-slate-700 shadow-md rounded-xl duration-500 hover:scale-102 hover:shadow-xl">
               <a routerLink="/product">
-                  <img [src]="product.img"
-                          alt="{{product.name}}" class="h-80 object-contain rounded-t-xl" />
+                <div class="relative">
+                    <img [src]="product.img"
+                    alt="{{product.name}}" class="h-80 w-full mx-auto object-contain rounded-t-xl product-image" />
+                </div>
                   <div class="px-4 py-3 ">
                       <span class="text-gray-400 mr-3 uppercase text-xs">{{product.brand}}</span>
                       <p class="text-lg text-black truncate block capitalize">{{product.name}}</p>
