@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   UserComponent
 } from "./user.component";
+import { ProductCategoryComponent } from './components/product-category/product-category.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,9 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: '', loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
-      { path: 'login', loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule) },
-      { path: 'register', loadChildren: () => import('./components/auth/register/register.module').then(m => m.RegisterModule) },
+      { path: 'login', loadComponent: () => import('./components/auth/login/login.component').then(m => m.LoginComponent) },
+      { path: 'register', loadComponent: () => import('./components/auth/register/register.component').then(m => m.RegisterComponent) },
+      { path: 'category', loadComponent: () => import('./components/product-category/product-category.component').then(m => m.ProductCategoryComponent) },
 
     ]
   }

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
-import { ProductCardComponent } from './product-card/product-card.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BrandSectionComponent } from './brand-section/brand-section.component';
 import { CategoryCardComponent } from './category-card/category-card.component';
 import { TextSlideComponent } from './text-slide/text-slide.component';
 import { SharedModule } from "../../shared/shared.module";
+import { ProductSectionComponent } from './product-section/product-section.component';
 
 
 
@@ -16,10 +16,10 @@ import { SharedModule } from "../../shared/shared.module";
   declarations: [
     HomeComponent,
     HeroSectionComponent,
-    ProductCardComponent,
     BrandSectionComponent,
     CategoryCardComponent,
     TextSlideComponent,
+    ProductSectionComponent,
   ],
   imports: [
     CommonModule,

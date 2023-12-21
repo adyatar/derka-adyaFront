@@ -4,6 +4,7 @@ import { FeatureSectionComponent } from './feature-section/feature-section.compo
 import {  HeaderComponent } from "./header/header.component";
 import {  FooterComponent } from "./footer/footer.component";
 import {  RouterModule } from "@angular/router";
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 
@@ -11,12 +12,14 @@ import {  RouterModule } from "@angular/router";
   declarations: [
     FeatureSectionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductCardComponent
   ],
   exports: [
     FeatureSectionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,

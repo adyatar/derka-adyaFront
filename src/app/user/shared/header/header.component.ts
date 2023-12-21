@@ -1,7 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import {
-  ThemeService
-} from "../../../services/theme.service";
+import { ThemeService } from "../../../services/theme.service";
 
 
 @Component({

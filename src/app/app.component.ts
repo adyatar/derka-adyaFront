@@ -35,7 +35,5 @@ constructor(private themeService: ThemeService, private renderer: Renderer2,priv
     this.themeSubscription.unsubscribe();
   }
 
-
-
   title = 'e-ADK';
 }
