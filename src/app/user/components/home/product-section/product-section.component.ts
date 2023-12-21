@@ -2,12 +2,16 @@ import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { HttpClient } from '@angular/common/http';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-product-section',
   templateUrl: './product-section.component.html',
   styleUrl: './product-section.component.css',
   encapsulation: ViewEncapsulation.None,
+  standalone:true,
+  imports:[SlickCarouselModule,SharedModule]
 })
 export class ProductSectionComponent implements OnInit {
 
