@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-brand-section',
   templateUrl: './brand-section.component.html',
-  styleUrl: './brand-section.component.css'
+  styleUrl: './brand-section.component.css',
+  standalone:true
 })
 export class BrandSectionComponent {
 
