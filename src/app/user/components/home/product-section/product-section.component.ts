@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-section',
@@ -15,13 +16,12 @@ constructor(private productService: ProductService) { }
 
   homePageProducts: Product[] = [];
 
+  httpClient = inject(HttpClient);
+
   category = [ "Apple", "Beats", "Huawei", "PlayStation" ];
-
-
 
   ngOnInit(): void {
     this.homePageProducts = this.productService.getHomePageProducts();
-    console.log(this.homePageProducts)
    }
 
    handleAddToCart(id: number) {

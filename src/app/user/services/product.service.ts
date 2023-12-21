@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   private products: Product[] = [
     { id:1,img: 'assets/images/apple.png',brand:'Apple',name:'IPhone 15 Pro Max',price:'$ 1,099.00',discount:'800' },
@@ -34,4 +36,6 @@ export class ProductService {
   getHomePageProducts(): Product[] {
     return this.products;
   }
+
+
 }

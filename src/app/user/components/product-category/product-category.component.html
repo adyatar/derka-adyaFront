@@ -1,6 +1,6 @@
 <section class="py-20 bg-bgColor font-poppins  ">
     <div class="px-4 py-4 mx-auto max-w-7xl lg:py-6 md:px-6">
-    <div class="flex flex-wrap mb-24 -mx-3">
+    <div class="flex flex-wrap -mx-3">
     <div class="left-column w-full pr-2 lg:w-1/4 lg:block">
     <div class="p-4 mb-5 bg-white border border-gray-200  ">
     <h2 class="text-2xl font-bold "> Categories</h2>
@@ -149,9 +149,10 @@
           <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id)">
           </app-product-card>
         </div>    
-      </div>
+    </div>
     <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
     </div>
     </div>
     </div>
+    <app-feature-section></app-feature-section>
     </section>
