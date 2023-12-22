@@ -37,7 +37,7 @@ export class ProductCategoryComponent implements OnInit {
   categoeyProduct: Product[] = [];
 
   ngOnInit(): void {
-    this.categoeyProduct = this.productService.getHomePageProducts();
+   // this.categoeyProduct = this.productService.getHomePageProducts();
    }
 
    

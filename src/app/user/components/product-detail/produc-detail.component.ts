@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-produc-detail',
@@ -12,6 +14,27 @@ import { RouterModule } from '@angular/router';
 
   ]
 })
-export class ProducDetailComponent {
+export class ProducDetailComponent implements OnInit{
+  product!: Product;
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
+
+  ngOnInit(): void {
+    
+    this.route.paramMap.subscribe(params => {
+      const id = +params.get('id')!;
+      if (id) {
+        // Fetch the product details using the ProductService
+        this.productService.getProductById(id).subscribe(product => {
+          this.product = product;
+        }, error => {
+          // Handle errors here, such as product not found or server error
+          console.error('Error fetching product', error);
+        });
+      }
+    });
+  }
 
 }

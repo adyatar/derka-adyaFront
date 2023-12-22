@@ -27,7 +27,7 @@ constructor(private productService:ProductService){
 
 }
 ngOnInit(): void {
-  this.cartProducts = this.productService.getHomePageProducts();
+ // this.cartProducts = this.productService.getHomePageProducts();
  }
  slideConfig = {dots:true,loop:false,draggable:false,arrows:false,mobileFirst: true,
   responsive: [

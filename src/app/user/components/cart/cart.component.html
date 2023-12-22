@@ -85,7 +85,7 @@
     [config]="slideConfig" 
     >
   <div ngxSlickItem *ngFor="let product of cartProducts" class="slide px-4 mb-6">
-    <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id)"></app-product-card>
+    <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id_prod)"></app-product-card>
   </div>
 </ngx-slick-carousel>
 </div>

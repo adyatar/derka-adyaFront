@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-section',
@@ -18,17 +19,26 @@ export class ProductSectionComponent implements OnInit {
 
 
 
-constructor(private productService: ProductService) { }
+constructor(private productService: ProductService,private router: Router) { }
 
   homePageProducts: Product[] = [];
+ //ad
+ products: Product[] = [];
 
   httpClient = inject(HttpClient);
 
   category = [ "Apple", "Beats", "Huawei", "PlayStation" ];
 
   ngOnInit(): void {
-    this.homePageProducts = this.productService.getHomePageProducts();
+   // this.homePageProducts = this.productService.getHomePageProducts();
+    //ad
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
+    });
    }
+   goToProductDetail(productId: number): void {
+    this.router.navigate(['/detail', productId]);
+  }
 
    handleAddToCart(id: number) {
       console.log(id)
