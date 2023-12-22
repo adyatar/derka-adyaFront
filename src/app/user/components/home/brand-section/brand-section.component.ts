@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
@@ -6,7 +7,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   templateUrl: './brand-section.component.html',
   styleUrl: './brand-section.component.css',
   standalone:true,
-  imports:[SlickCarouselModule]
+  imports:[SlickCarouselModule,CommonModule]
 })
 export class BrandSectionComponent {
 
