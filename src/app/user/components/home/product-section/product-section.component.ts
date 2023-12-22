@@ -4,6 +4,7 @@ import { Product } from '../../../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SharedModule } from '../../../shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-section',
@@ -11,7 +12,7 @@ import { SharedModule } from '../../../shared/shared.module';
   styleUrl: './product-section.component.css',
   encapsulation: ViewEncapsulation.None,
   standalone:true,
-  imports:[SlickCarouselModule,SharedModule]
+  imports:[SlickCarouselModule,SharedModule,CommonModule]
 })
 export class ProductSectionComponent implements OnInit {
 
