@@ -12,7 +12,7 @@ module.exports = {
       colors:{
         "bgColor": '#f1f4f4',
         "textSlider": '#7bdad3',
-        "headerColor": '#252726',
+        "headerColor": '#1d1d1d',
         "herocolor" : '#a7a1b8',
         
         

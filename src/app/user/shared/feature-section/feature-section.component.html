@@ -1,51 +1,16 @@
-<div class="flex flex-wrap p-8 ">
-    <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-        <div class="mb-9 rounded-xl py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9 bg-gray-700 dark:bg-white">
-            <div class="mx-auto mb-2 inline-block">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M31.786.77h-9.452c-.619 0-1.212.244-1.652.68L1.78 20.355a3.45 3.45 0 00-.002 4.869l9.002 9.002a3.45 3.45 0 004.87.002l18.894-18.894c.44-.443.684-1.036.684-1.655V4.216A3.432 3.432 0 0031.787.77zM3.522 22.092l18.86-18.86h9.406c.261 0 .51.102.693.286l.02.02c.17.181.265.422.264.672v9.42L13.91 32.483a.988.988 0 01-1.392-.002L3.52 23.484a.988.988 0 01.002-1.392z"></path><path d="M27.846 10.616a2.462 2.462 0 110-4.923 2.462 2.462 0 010 4.923z"></path></svg>
-            </div>
-            <div>
-                <h3 class="mb-2 dark:text-black text-white text-base font-bold  sm:text-base lg:text-base xl:text-2xl">Lowest Prices
-                </h3>
-                <p class="text-xs font-medium dark:text-black text-white text-body-color">Benefit from the cheapest prices on high-quality products.</p>
-            </div>
-        </div>
-    </div>
-    <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-        <div class="mb-9 rounded-xl py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9 bg-gray-700 dark:bg-white">
-            <div class="mx-auto mb-2 inline-block">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 23"><path d="M30 10.167c.637 0 1.154.51 1.167 1.143v1.193a7.018 7.018 0 01-6.885 6.996l-.115.001H10.649l1.51 1.508c.449.45.455 1.174.018 1.631l-.019.02c-.449.449-1.174.455-1.63.018l-3.52-3.519a1.167 1.167 0 01-.018-1.63l3.518-3.52a1.167 1.167 0 011.669 1.631l-1.529 1.527h13.515a4.684 4.684 0 004.67-4.589v-1.244c0-.644.523-1.166 1.167-1.166zm-8.528-9.01l3.52 3.518c.449.45.455 1.174.018 1.63l-3.518 3.52a1.167 1.167 0 01-1.669-1.63l1.526-1.529H7.837a4.684 4.684 0 00-4.67 4.59V12.5a1.167 1.167 0 01-2.334.023V11.33a7.018 7.018 0 016.885-6.995l.115-.002H21.35l-1.507-1.508a1.167 1.167 0 01-.019-1.63l.019-.02a1.167 1.167 0 011.63-.019z"></path></svg>
-            </div>
-            <div>
-                <h3 class="mb-2 text-base font-bold text-black sm:text-base lg:text-base xl:text-base">Easy Returns
-                </h3>
-                <p class="text-xs font-medium text-body-color">Changed your mind? Return your order within 14 days.
-                </p>
+<div class="flex flex-wrap m-16 ">
+    @for (feature of features; track $index) {
+        <div class="w-full px-4 md:w-1/2 lg:w-1/4">
+            <div class="mb-9 rounded-xl py-10 px-8 bg-[#fef6f3] sm:p-10 lg:px-8 xl:px-10 text-center">
+                <div class="mx-auto mb-4 inline-block">
+                   <img src="{{feature.imageUrl}}" class="w-1/3 mx-auto">
+                </div>
+                <div class="flex-grow">
+                    <h3 class="h-16 dark:text-black text-white text-base font-bold sm:text-base lg:text-2xl xl:text-2xl">{{feature.title}}
+                    </h3>
+                    <p class="mt-4 text-xs font-medium dark:text-black text-white text-body-color">{{feature.description}}</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-        <div class="mb-9 rounded-xl py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9 bg-gray-700 dark:bg-white">
-            <div class="mx-auto mb-2 inline-block">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 38"><path d="M14.17.783a7.302 7.302 0 017.301 7.181l.001.121v6.008l1.217.001a4.868 4.868 0 014.863 4.651l.005.217v13.387a4.868 4.868 0 01-4.868 4.868H5.651a4.868 4.868 0 01-4.868-4.868V18.962a4.868 4.868 0 014.868-4.868l1.217-.001V8.085A7.302 7.302 0 0114.17.783zm8.519 15.745H5.651a2.434 2.434 0 00-2.434 2.434v13.387a2.434 2.434 0 002.434 2.434h17.038a2.434 2.434 0 002.434-2.434V18.962a2.434 2.434 0 00-2.434-2.434zM14.17 3.217a4.868 4.868 0 00-4.867 4.788l-.001 6.088h9.736V8.085a4.868 4.868 0 00-4.868-4.868z"></path></svg>
-            </div>
-            <div>
-                <h3 class="mb-2 text-xs font-bold text-black sm:text-base lg:text-base xl:text-2xl">Secure Payments
-                </h3>
-                <p class="text-xs font-medium text-body-color">All transactions are secure and confidential.</p>
-            </div>
-        </div>
-    </div>
-    <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-        <div class="mb-9 rounded-xl py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9 bg-gray-700 dark:bg-white">
-            <div class="mx-auto mb-2 inline-block">
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M3.017 13.287c.552.307.75 1.003.443 1.555a9.302 9.302 0 00.349 9.624l.062.094c.123.186.217.35.287.518.121.286.176.575.112.897l-.125.643-.53 2.754L6.66 28.18a2.264 2.264 0 011.696.014l.007.003.063.024c1.247.477 2.544.74 3.782.75h.074a10.23 10.23 0 005.144-1.38 1.143 1.143 0 011.146 1.977 12.514 12.514 0 01-6.29 1.69c-1.554 0-3.154-.32-4.68-.904l-.1-.04-.012-.005-4 1.566-.008.003a1.662 1.662 0 01-.588.122H2.83a1.727 1.727 0 01-1.026-.354l-.04-.031-.01-.01a1.712 1.712 0 01-.588-1.609l.802-4.168-.072-.109A11.588 11.588 0 011.4 13.844l.063-.114a1.143 1.143 0 011.554-.443zM18.45 0C25.943 0 32.024 5.846 32 13.072a12.716 12.716 0 01-2.166 7.088l-.019.027-.02.027a1.263 1.263 0 00-.079.116 1.598 1.598 0 00-.063.122l-.007.016 1.134 4.03c.03.111.051.224.062.338l.005.049.003.043v.043c0 .947-.767 1.715-1.714 1.715h-.058l-.058-.006a2.109 2.109 0 01-.525-.123l-.045-.017-4.054-1.437-.028-.012a.743.743 0 00-.54-.008l-.096.035-.1.037-.103.038-.107.038-.11.039-.114.04-.117.039-.119.04-.12.04-.123.039-.124.039-.25.077c-.145.044-.292.086-.435.125-1.23.337-2.627.591-3.674.591-7.433 0-13.357-5.927-13.357-13.222 0-.903.098-1.804.29-2.684C6.47 4.374 12.003 0 18.45 0zm0 2.286c-5.38 0-9.974 3.632-11.048 8.594-.157.722-.237 1.46-.238 2.199 0 6.032 4.902 10.935 11.072 10.935.414 0 .942-.06 1.5-.157l.12-.021c.121-.022.243-.046.365-.071l.122-.026.06-.013.123-.027.122-.028.181-.043.12-.03.06-.015.12-.03.059-.016.117-.032c.096-.026.195-.055.293-.084l.238-.072.06-.018.118-.038.117-.037.116-.038.057-.02.112-.037.056-.02.108-.037.053-.018.103-.037.099-.036.094-.035.09-.033a3.027 3.027 0 012.228.036l-.006-.003-.028-.01 3.068 1.086-.882-3.134c-.1-.357-.07-.704.036-1.053l.011-.037c.073-.227.177-.448.303-.663l.006-.012c.068-.112.142-.221.222-.326l-.025.033.023-.035a10.431 10.431 0 001.74-5.692v-.067c.019-5.942-5.016-10.782-11.265-10.782z"></path></svg>
-            </div>
-            <div>
-                <h3 class="mb-2 text-xs font-bold text-black sm:text-base lg:text-base xl:text-2xl">Customer Service 7d/7
-                </h3>
-                <p class="text-xs font-medium text-body-color">Our team is available 7 days a week to assist you.</p>
-            </div>
-        </div>
-    </div>
+    }
 </div>

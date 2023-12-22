@@ -3,8 +3,8 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { HttpClient } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { SharedModule } from '../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
 
 @Component({
   selector: 'app-product-section',
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-section.component.css',
   encapsulation: ViewEncapsulation.None,
   standalone:true,
-  imports:[SlickCarouselModule,SharedModule,CommonModule]
+  imports:[SlickCarouselModule,ProductCardComponent,CommonModule]
 })
 export class ProductSectionComponent implements OnInit {
 

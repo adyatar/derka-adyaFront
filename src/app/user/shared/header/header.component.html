@@ -1,5 +1,5 @@
 <header class="antialiased sticky top-0 z-30">
-  <nav class="bg-headerColor border-gray-200 px-4 lg:px-6 py-2.5 ">
+  <nav class="bg-headerColor border-gray-200 px-4 lg:px-10 py-4 mx-auto">
       <div class="flex flex-wrap justify-between items-center">
           <div class="flex justify-start items-center">
               <button aria-expanded="true" aria-controls="sidebar" class="p-2 mr-2 text-white rounded-lg cursor-pointer lg:hidden  hover:bg-gray-100 focus:bg-gray-100  focus:ring-2 focus:ring-gray-100    ">
@@ -11,25 +11,22 @@
               </a>
             </div>
               <div class="flex-1 flex justify-center items-center">
-                <form autocomplete="off" action="#" id="searchForm" method="GET" class="lg:block hidden">
-                  <label for="topbar-search" class="sr-only">Search</label>
-                  <div class="relative mt-1 lg:w-96">
-                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/> </svg>
-                    </div>
-                    <input type="text" name="email" id="topbar-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5      " placeholder="Search">
-                  </div>
-                </form>
+                <ul class="hidden font-medium lg:flex">
+                  <li class="mr-12">
+                    <a href="" class="text-white">Product</a>
+                  </li>
+                  <li class="mr-12"><a href=""
+                          class="text-white">Category</a>
+                  </li>
+                  <li class="mr-12"><a href=""
+                          class="text-white">Collection</a>
+                  </li>
+                  <li class="mr-12"><a href=""
+                          class="text-white">Brand</a>
+                  </li>
+              </ul>
               </div>
           <div class="flex justify-end items-center">
-          
-              <button id="toggleSidebarMobileSearch" type="button" class="p-2 text-white rounded-lg lg:hidden  hover:bg-gray-100   ">
-                  <span class="sr-only">Search</span>
-                  <!-- Search icon -->
-                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                    </svg>
-              </button>
               <a routerLink="/cart" type="button" class="mx-1 text-white  " aria-label="View cart">
                 <!-- SVG for Cart Icon -->
                 <svg width="2rem" height="2rem" viewBox="0 0 40 40" fill="currentColor"><path clip-rule="evenodd" d="M25.5 14.82V13.16C25.4414 11.8295 24.8717 10.5729 23.9095 9.6521C22.9473 8.7313 21.6668 8.21735 20.335 8.21735C19.0032 8.21735 17.7228 8.7313 16.7606 9.6521C15.7983 10.5729 15.2286 11.8295 15.17 13.16V14.82H10V25.95C10 27.1709 10.4844 28.342 11.3467 29.2062C12.2091 30.0705 13.3791 30.5573 14.6 30.56H26.0701C27.2919 30.5574 28.4629 30.0708 29.3269 29.2068C30.1909 28.3429 30.6774 27.1718 30.6801 25.95V14.82H25.5ZM17.17 13.16C17.2155 12.3514 17.5688 11.5908 18.1573 11.0344C18.7459 10.478 19.5251 10.168 20.335 10.168C21.1449 10.168 21.9241 10.478 22.5127 11.0344C23.1013 11.5908 23.4545 12.3514 23.5 13.16V14.82H17.17V13.16ZM28.6801 25.95C28.6801 26.6422 28.405 27.3061 27.9155 27.7956C27.4261 28.285 26.7623 28.56 26.0701 28.56H14.6C14.2578 28.56 13.9188 28.4924 13.6027 28.3611C13.2866 28.2299 12.9996 28.0374 12.758 27.795C12.5164 27.5525 12.3251 27.2647 12.1951 26.9481C12.065 26.6315 11.9987 26.2923 12 25.95V16.8H15.17V20.62H17.17V16.8H23.5V20.62H25.5V16.8H28.6801V25.95Z" fill="currentColor" fill-rule="evenodd"></path></svg>
