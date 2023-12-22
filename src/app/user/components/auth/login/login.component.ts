@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {  Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -6,7 +7,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   standalone: true,
-  imports:[RouterModule]
+  imports:[RouterModule,CommonModule]
 })
 export class LoginComponent{
 

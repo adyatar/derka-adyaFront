@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-section.component.css',
   encapsulation: ViewEncapsulation.None,
   standalone:true,
-  imports:[CommonModule,SlickCarouselModule,SharedModule]
+  imports:[SlickCarouselModule,SharedModule,CommonModule]
 })
 export class ProductSectionComponent implements OnInit {
 

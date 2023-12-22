@@ -12,6 +12,10 @@ module.exports = {
       colors:{
         "bgColor": '#f1f4f4',
         "textSlider": '#7bdad3',
+        "headerColor": '#252726',
+        "herocolor" : '#a7a1b8',
+        
+        
       },
       animation: {
         RightToLeft: 'RightToLeft 20s infinite linear',
