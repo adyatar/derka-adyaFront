@@ -1,4 +1,4 @@
-<div class="bg-gray-100 h-screen max-h-80 mt-20 ">
+<div class="bg-gray-100 py-20">
     <div class="container mx-auto px-4">
         <h1 class="text-2xl font-semibold mb-4">Shopping Cart</h1>
         <div class="flex flex-col md:flex-row gap-4">
@@ -85,7 +85,9 @@
     [config]="slideConfig" 
     >
   <div ngxSlickItem *ngFor="let product of cartProducts" class="slide px-4 mb-6">
-    <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id)"></app-product-card>
+    <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id_prod)"></app-product-card>
   </div>
 </ngx-slick-carousel>
 </div>
+
+<app-feature-section></app-feature-section>

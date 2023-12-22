@@ -1,21 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Product} from '../models/product.model';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Category } from '../models/category.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class CategoryService {
 
   constructor(private http:HttpClient) { }
-  
   private apiUrl = environment.gatewayApiUrlCatalog;
-
-  getAllProducts() : Observable<Product[]>{
-     return this.http.get<Product[]>(`${this.apiUrl}/products`);
-  }
-
+  
+  getAllCategories() : Observable<Category[]>{
+    return this.http.get<Category[]>(`${this.apiUrl}/categories`);
+ }
 
 }

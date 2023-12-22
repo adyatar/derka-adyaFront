@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation, inject, Input } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
-import { HttpClient } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
+import { Category } from '../../../models/category.model';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-product-section',
@@ -16,23 +17,35 @@ import { ProductCardComponent } from '../../../shared/product-card/product-card.
 })
 export class ProductSectionComponent implements OnInit {
 
+constructor(private productService: ProductService,private categorySrv:CategoryService) { }
 
-
-constructor(private productService: ProductService) { }
-
-  homePageProducts: Product[] = [];
-
-  httpClient = inject(HttpClient);
-
-  category = [ "Apple", "Beats", "Huawei", "PlayStation" ];
+  products:Product[]=[];
+  category:Category[]=[];
 
   ngOnInit(): void {
-    this.homePageProducts = this.productService.getHomePageProducts();
+    this.getAllProducts();
+    this.getAllCategories();
    }
 
    handleAddToCart(id: number) {
       console.log(id)
    }
+
+   getAllProducts(){
+    this.productService.getAllProducts().subscribe(
+      (data)=>{this.products=data;console.log(data);
+      }
+    );
+   }
+
+   getAllCategories(){
+    this.categorySrv.getAllCategories().subscribe(
+      (data)=>{this.category=data;console.log(data);
+      }
+    );
+   }
+
+
 
    slideConfig = {dots:true,loop:false,draggable:false,arrows:false,mobileFirst: true,
     responsive: [

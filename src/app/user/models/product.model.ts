@@ -1,8 +1,9 @@
-export interface Product {
-    id: number;
-    name: string;
+  export interface Product {
+    id_prod: number;
+    name_prod: string;
+    desc_prod: string;
     price: string;
-    img: string;
-    brand:string;
-    discount:string
+    qte_prod:string;
+    image_prod:string;
+    id_cat:string
   }
