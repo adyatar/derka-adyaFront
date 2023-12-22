@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject, Input } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product.model';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +15,7 @@ import { ProductCardComponent } from '../../../shared/product-card/product-card.
   imports:[SlickCarouselModule,ProductCardComponent,CommonModule]
 })
 export class ProductSectionComponent implements OnInit {
+
 
 
 constructor(private productService: ProductService) { }
