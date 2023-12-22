@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
 import { Category } from '../../../models/category.model';
 import { CategoryService } from '../../../services/category.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-section',
   templateUrl: './product-section.component.html',
@@ -17,7 +17,7 @@ import { CategoryService } from '../../../services/category.service';
 })
 export class ProductSectionComponent implements OnInit {
 
-constructor(private productService: ProductService,private categorySrv:CategoryService) { }
+constructor(private productService: ProductService,private categorySrv:CategoryService,private router:Router) { }
 
   products:Product[]=[];
   category:Category[]=[];
@@ -26,6 +26,9 @@ constructor(private productService: ProductService,private categorySrv:CategoryS
     this.getAllProducts();
     this.getAllCategories();
    }
+   goToProductDetail(productId: number): void {
+    this.router.navigate(['/detail', productId]);
+  }
 
    handleAddToCart(id: number) {
       console.log(id)

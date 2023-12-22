@@ -1,17 +1,17 @@
  <div class="dark:bg-white bg-slate-700 shadow-md rounded-xl duration-500 hover:scale-102 hover:shadow-xl">
               <a routerLink="/product">
                 <div class="relative">
-                    <img [src]="product.image_prod"
+                    <img [src]="'assets/images/'+ product.image_prod"
                     alt="{{product.name_prod}}" class="h-80 w-full mx-auto object-contain rounded-t-xl product-image" />
                 </div>
                   <div class="px-4 py-3 ">
-                      <span class="text-gray-400 mr-3 uppercase text-xs"></span>
+                      <span class="text-gray-400 mr-3 uppercase text-xs">applee</span>
                       <p class="text-lg text-black truncate block capitalize">{{product.name_prod}}</p>
                       <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <p class="text-lg text-black font-bold cursor-auto my-3">{{product.price}} $</p>
                             <del>
-                                <p class="text-sm text-gray-600 cursor-auto ml-2"></p>
+                                <p class="text-sm text-gray-600 cursor-auto ml-2">discount</p>
                             </del>
                         </div>  
                           <div (click)="onAddToCart()" class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"

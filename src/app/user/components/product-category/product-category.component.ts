@@ -37,7 +37,6 @@ export class ProductCategoryComponent implements OnInit {
   categoeyProduct: Product[] = [];
 
   ngOnInit(): void {
-    
    }
 
    

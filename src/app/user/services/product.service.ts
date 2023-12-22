@@ -8,7 +8,7 @@ import { environment } from '../../../environment';
   providedIn: 'root'
 })
 export class ProductService {
-
+  
   constructor(private http:HttpClient) { }
   
   private apiUrl = environment.gatewayApiUrlCatalog;
@@ -17,5 +17,8 @@ export class ProductService {
      return this.http.get<Product[]>(`${this.apiUrl}/products`);
   }
 
-
+  getProductById(id: number): Observable<Product> {
+    // Adjust the URL path according to your backend endpoint
+    return this.http.get<Product>(`${this.apiUrl}/product/${id}`);
+  }
 }
