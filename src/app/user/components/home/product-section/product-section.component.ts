@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation, inject, Input } from '@angular/core';
-import { ProductService } from '../../../services/product.service';
-import { Product } from '../../../models/product.model';
+import { ProductService } from '../../../../services/product.service';
+import { Product } from '../../../../models/product.model';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../../../shared/product-card/product-card.component';
-import { Category } from '../../../models/category.model';
-import { CategoryService } from '../../../services/category.service';
+import { Category } from '../../../../models/category.model';
+import { CategoryService } from '../../../../services/category.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-section',
@@ -17,6 +17,9 @@ import { Router } from '@angular/router';
 })
 export class ProductSectionComponent implements OnInit {
 
+
+
+
 constructor(private productService: ProductService,private categorySrv:CategoryService,private router:Router) { }
 
   products:Product[]=[];
@@ -26,25 +29,31 @@ constructor(private productService: ProductService,private categorySrv:CategoryS
     this.getAllProducts();
     this.getAllCategories();
    }
+
+
    goToProductDetail(productId: number): void {
     this.router.navigate(['/detail', productId]);
   }
 
-   handleAddToCart(id: number) {
-      console.log(id)
+   onAddToCart(id: number) {
    }
 
    getAllProducts(){
     this.productService.getAllProducts().subscribe(
-      (data)=>{this.products=data;console.log(data);
-      }
+      (data)=>{this.products=data }
     );
    }
 
+   getProductsByCategory(id: number) {
+    this.categorySrv.getCategoryById(id).subscribe(
+      (data)=>{this.products = data.products }
+    );
+    }
+    
+
    getAllCategories(){
     this.categorySrv.getAllCategories().subscribe(
-      (data)=>{this.category=data;console.log(data);
-      }
+      (data)=>{this.category=data}
     );
    }
 
