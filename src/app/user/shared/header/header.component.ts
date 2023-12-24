@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ThemeService } from "../../../services/theme.service";
-import { Router, RouterModule } from '@angular/router';
-import { CartService } from '../../../services/cart.service';
+import {  RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/Security/auth.service';
+import { User } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
 
 
 @Component({
@@ -18,12 +18,24 @@ export class HeaderComponent implements OnInit {
   isDropdownVisible: boolean = false;
   isLoggedIn: boolean = false;
   userRole: string = '';
+  user!:User | null
 
-  constructor(private themeService: ThemeService,private cartService:CartService,private authService: AuthService) { }
+  constructor(private userservice:UserService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.isAuthenticatedUser().subscribe(status => this.isLoggedIn = status);
-        this.authService.getUserRole().subscribe(role => this.userRole = role);
+    this.authService.isAuthenticatedUser().subscribe(status => {
+      this.isLoggedIn = status;
+      if (status) {
+        const userId = this.authService.getUserId();
+        if (userId) {
+          this.userservice.getUserProfile(userId).subscribe(
+            data => this.user = data,
+            error => console.log(error)   
+          );
+        }
+      }
+    }); 
    }
 
 
@@ -31,11 +43,6 @@ export class HeaderComponent implements OnInit {
     this.authService.logout()
   }
 
-
-
-  toggleDarkMode() {
-    this.themeService.toggleDarkMode();
-  }
 
   toggleDropdown(): void {
     this.isDropdownVisible = !this.isDropdownVisible;

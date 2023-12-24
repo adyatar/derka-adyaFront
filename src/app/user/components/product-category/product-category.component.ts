@@ -39,7 +39,6 @@ export class ProductCategoryComponent implements OnInit {
   ngOnInit(): void {
    }
 
-   
 
    handleAddToCart(id: number) {
     console.log(id)

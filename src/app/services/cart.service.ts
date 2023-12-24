@@ -26,7 +26,7 @@ export class CartService {
 }
 
 
-loadUserCart(userId: string): void {
+loadUserCart(userId: number): void {
   const cartData = localStorage.getItem(`cart_${userId}`);
   this.cart = cartData ? JSON.parse(cartData) : [];
 }

@@ -42,12 +42,12 @@
               } @else {
                  <button (click)="toggleDropdown()" type="button" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 " id="dropdown-button">
                   <span class="sr-only">Open user menu</span>
-                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                  <img class="w-8 h-8 rounded-full" src="assets/images/{{user?.imgName}}" alt="user photo">
               </button>
               <div  [class.hidden]="!isDropdownVisible" class="top-full right-6 hidden absolute z-50  w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow " id="dropdown">
                   <div class="py-3 px-4">
-                      <span class="block text-sm font-semibold text-gray-900 ">Neil sims</span>
-                      <span class="block text-sm text-gray-500 truncate ">nameflowbite.com</span>
+                      <span class="block text-sm font-semibold text-gray-900 ">{{user?.name}}</span>
+                      <span class="block text-sm text-gray-500 truncate ">{{user?.email}}</span>
                   </div>
                   <ul class="py-1 text-gray-500 " aria-labelledby="dropdown">
                       <li>

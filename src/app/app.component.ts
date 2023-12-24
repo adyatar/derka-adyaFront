@@ -1,6 +1,4 @@
-import { Component, Renderer2, OnInit, OnDestroy } from '@angular/core';
-import { ThemeService } from './services/theme.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -10,10 +8,9 @@ import { filter } from 'rxjs/operators';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit,OnDestroy {
-  private themeSubscription!: Subscription;
+export class AppComponent implements OnInit {
 
-constructor(private themeService: ThemeService, private renderer: Renderer2,private router:Router) {
+constructor(private router:Router) {
   this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
   ).subscribe(() => {
@@ -23,17 +20,8 @@ constructor(private themeService: ThemeService, private renderer: Renderer2,priv
 
   ngOnInit(): void {
     initFlowbite();
-    this.themeSubscription = this.themeService.getDarkMode().subscribe(isDark => {
-      if (isDark) {
-        this.renderer.addClass(document.documentElement, 'dark');
-      } else {
-        this.renderer.removeClass(document.documentElement, 'dark');
-      }
-    });
   }
-  ngOnDestroy(): void {
-    this.themeSubscription.unsubscribe();
-  }
+
 
   title = 'e-ADK';
 }

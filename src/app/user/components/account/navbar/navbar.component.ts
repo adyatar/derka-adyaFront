@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,17 @@ import { RouterModule } from '@angular/router';
   standalone:true,
   imports:[RouterModule,CommonModule]
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
+
+
+  ngOnInit(): void {
+   
+  }
+
+
+ 
+
+  
 
 }

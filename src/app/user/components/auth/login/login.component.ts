@@ -35,12 +35,9 @@ export class LoginComponent implements OnInit{
       const password = this.loginForm.get('password')?.value;
 
       this.authService.login(email, password).subscribe(success => {
-        if (success) {
-          this.router.navigate(['/account']);
-        } else {
+        if (!success) {
           console.log("Login failed");
-          this.loginError = 'Login or password is incorrect';
-        }
+          this.loginError = 'Login or password is incorrect';        }
       });
     } else {
       Object.keys(this.loginForm.controls).forEach(field => {

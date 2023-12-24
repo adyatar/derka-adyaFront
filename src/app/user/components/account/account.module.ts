@@ -16,6 +16,7 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
         AccountRoutingModule,
         NavbarComponent,
         SidebarComponent
-    ]
+    ],
+    providers:[]
 })
 export class AccountModule { }
