@@ -6,10 +6,9 @@ import { ProductSectionComponent } from './components/home/product-section/produ
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-
 @NgModule({
   declarations: [
-    UserComponent,    
+    UserComponent,
   ],
   imports: [
     CommonModule,

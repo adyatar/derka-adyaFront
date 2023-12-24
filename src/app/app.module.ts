@@ -2,7 +2,8 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './services/Security/authInterceptor.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule 
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

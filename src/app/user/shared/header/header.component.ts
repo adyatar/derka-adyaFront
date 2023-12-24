@@ -1,6 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ThemeService } from "../../../services/theme.service";
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CartService } from '../../../services/cart.service';
+import { AuthService } from '../../../services/Security/auth.service';
 
 
 @Component({
@@ -10,11 +12,26 @@ import { RouterModule } from '@angular/router';
   standalone:true,
   imports:[RouterModule]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+ 
+  cartItemCount: number = 0;
+  isDropdownVisible: boolean = false;
+  isLoggedIn: boolean = false;
+  userRole: string = '';
 
-  constructor(private themeService: ThemeService) { }
+  constructor(private themeService: ThemeService,private cartService:CartService,private authService: AuthService) { }
 
-  private isDropdownVisible: boolean = false;
+  ngOnInit(): void {
+    this.authService.isAuthenticatedUser().subscribe(status => this.isLoggedIn = status);
+        this.authService.getUserRole().subscribe(role => this.userRole = role);
+   }
+
+
+   onLogout() {
+    this.authService.logout()
+  }
+
+
 
   toggleDarkMode() {
     this.themeService.toggleDarkMode();
@@ -23,6 +40,8 @@ export class HeaderComponent {
   toggleDropdown(): void {
     this.isDropdownVisible = !this.isDropdownVisible;
   }
+
+  
 
   @HostListener('document:click', ['$event'])
   clickOutside(event: any) {

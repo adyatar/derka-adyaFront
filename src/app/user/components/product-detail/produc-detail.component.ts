@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Product } from '../../../models/product.model';
 import { ProductService } from '../../../services/product.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-produc-detail',
@@ -18,7 +19,8 @@ export class ProducDetailComponent implements OnInit{
   product!: Product;
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService:CartService
   ) {}
 
   ngOnInit(): void {
@@ -26,15 +28,21 @@ export class ProducDetailComponent implements OnInit{
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id')!;
       if (id) {
-        // Fetch the product details using the ProductService
         this.productService.getProductById(id).subscribe(product => {
           this.product = product;
         }, error => {
-          // Handle errors here, such as product not found or server error
           console.error('Error fetching product', error);
         });
       }
     });
+  }
+
+  addToCart(product: Product): void{
+    this.cartService.addToCart(product);
+  }
+
+  isProductInCart(productId: number): boolean{
+    return this.cartService.isProductInCart(productId);
   }
 
 }

@@ -12,9 +12,11 @@ const routes: Routes = [
       { path: 'login', loadComponent: () => import('./components/auth/login/login.component').then(m => m.LoginComponent) },
       { path: 'register', loadComponent: () => import('./components/auth/register/register.component').then(m => m.RegisterComponent) },
       { path: 'category', loadComponent: () => import('./components/product-category/product-category.component').then(m => m.ProductCategoryComponent) },
-
     ]
-  }
+  },
+  { path:'account',loadChildren:()=>import('./components/account/account.module').then(m=>m.AccountModule)}
+  
+  
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
