@@ -45,24 +45,18 @@ ngOnInit(): void {
 }
 
 increaseQuantity(index: number): void {
-  this.cartItems[index].qte += 1;
-  this.updateCart();
+  if (index >= 0 && index < this.cartItems.length) {
+    this.cartItems[index].qte += 1;
+    this.cartService.updateCart(this.cartItems); // Update via CartService
+  }
 }
 
 decreaseQuantity(index: number): void {
-  if (this.cartItems[index].qte > 1) {
+  if (index >= 0 && index < this.cartItems.length && this.cartItems[index].qte > 1) {
     this.cartItems[index].qte -= 1;
-    this.updateCart();
+    this.cartService.updateCart(this.cartItems); // Update via CartService
   }
 }
-
-updateCart(): void {
-  const userId = this.authService.getUserId();
-  if (userId !== null) {
-    localStorage.setItem(`cart_${userId}`, JSON.stringify(this.cartItems));
-  }
-}
-
 
 calculateTotal(): number {
   return this.calculateSubtotal() + this.calculateShipping();
@@ -74,7 +68,10 @@ removeItem(index: number) {
   const userId = this.authService.getUserId() || 'unauthenticated';
   const cartKey = `cart_${userId}`;
   localStorage.setItem(cartKey, JSON.stringify(this.cartItems));
+  this.cartService.updateCart(this.cartItems);
 }
+
+
 
 
 calculateShipping(): number {
