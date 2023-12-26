@@ -15,9 +15,9 @@ import { CommonModule } from '@angular/common';
 export class AddProductComponent implements OnInit{
   productName: string = '';
   productDescription: string = '';
-  productPrice: string = '';
-  productQuantity: string = '';
-  productCategory: string = ''; // Assuming this is a string; adjust as necessary
+  productPrice!: number ;
+  productQuantity!: number;
+  productCategory!: number; // Assuming this is a string; adjust as necessary
   selectedFileName: string = ''; // For the image name
 
   @Output() closePopup = new EventEmitter<void>();
@@ -41,13 +41,14 @@ export class AddProductComponent implements OnInit{
   submitProduct() {
     // Create a product object based on your Product interface
     const productData: Product = {
-      id_prod: 0, // Assuming this will be set by your backend or database
+      // Assuming this will be set by your backend or database
       name_prod: this.productName,
       desc_prod: this.productDescription,
       price: this.productPrice,
       qte_prod: this.productQuantity,
       image_prod: this.selectedFileName,
-      id_cat: this.productCategory
+      idCat: this.productCategory,
+      id_prod: 0
     };
 
     // Emit the event with the product data

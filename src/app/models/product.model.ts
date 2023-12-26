@@ -6,4 +6,5 @@
     qte_prod?:number;
     image_prod:string;
     quantity?: number;
+    idCat?:number
   }

@@ -42,7 +42,7 @@ addToCart(product: Product): void {
           id_prod:product.id_prod,
           name_prod: product.name_prod,
           image_prod: product.image_prod,
-          price:product.price
+          price:product.price,
         }
       };
       this.cart.push(newCartItem);

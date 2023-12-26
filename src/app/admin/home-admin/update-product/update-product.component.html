@@ -30,9 +30,9 @@
       <!-- This part needs to be dynamically filled with category options -->
       <div class="mb-2">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="product-category">Category<span class="text-red-500">*</span></label>
-        <select id="product-category" [(ngModel)]="product.id_cat" name="productCategory" class="shadow border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+        <select id="product-category" [(ngModel)]="product.idCat" name="productCategory" class="shadow border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
           <!-- Category options should be populated here -->
-          <option *ngFor="let category of categories" [value]="category.id_cat">{{category.name_cat}}</option>
+          <option *ngFor="let category of categories" [value]="category.idCat">{{category.name_cat}}</option>
         </select>
       </div>
 

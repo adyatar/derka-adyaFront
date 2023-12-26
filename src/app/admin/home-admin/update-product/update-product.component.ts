@@ -49,7 +49,7 @@ ngOnInit(): void {
       price: this.product.price,
       qte_prod: this.product.qte_prod,
       image_prod: this.selectedFileName,
-      id_cat: this.product.id_cat
+      idCat: this.product.idCat
     };
 
     // Emit the event with the product data
