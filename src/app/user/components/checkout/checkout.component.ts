@@ -3,18 +3,20 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/Security/auth.service';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../account/navbar/navbar.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Order } from '../../../models/order.model';
 import { CheckoutService } from '../../../services/checkout.service';
 import { CartItem } from '../../../models/cartItem.model';
 import { OrderItem } from '../../../models/orderitem.model';
+import { CartService } from '../../../services/cart.service';
+import { GiftcardService } from '../../../services/giftcard.service';
 
 @Component({
     selector: 'app-checkout',
     standalone: true,
     templateUrl: './checkout.component.html',
     styleUrl: './checkout.component.css',
-    imports: [RouterModule, CommonModule, NavbarComponent,ReactiveFormsModule]
+    imports: [RouterModule, CommonModule, NavbarComponent,ReactiveFormsModule,FormsModule]
 })
 export class CheckoutComponent implements OnInit {
   isLoggedIn: boolean = false;
@@ -23,9 +25,16 @@ export class CheckoutComponent implements OnInit {
   subTotal!:number;
   loginForm?: any;
   loginError!: string;
+  giftCardCode: string = '';
+  errorMessage: string = '';
 
-
-  constructor(private authService :AuthService,private fb: FormBuilder, private router: Router,private checkoutService: CheckoutService){}
+  constructor(
+    private authService :AuthService,
+    private fb: FormBuilder, 
+    private router: Router,
+    private checkoutService: CheckoutService,
+    private cartService:CartService,
+    private giftCardService:GiftcardService){}
 
 
 
@@ -87,7 +96,11 @@ export class CheckoutComponent implements OnInit {
     }
 
 
-    onPlaceOrder() {
+    onPlaceOrder(proceedWithOrder: boolean) {
+      if (!proceedWithOrder) {
+        this.errorMessage = 'Cannot place order: Invalid or insufficient gift card balance.';
+        return;
+      }
       const userId = this.authService.getUserId();
       const orderItems: OrderItem[] = this.cartItems.map(cartItem => ({
         qte: cartItem.qte,
@@ -102,13 +115,46 @@ export class CheckoutComponent implements OnInit {
       };
       this.checkoutService.placeOrder(order).subscribe({
           next: (orderResponse) => {
-              console.log('Order placed successfully', orderResponse);
+            this.cartService.clearCart();
+            this.redirectToSuccess();
           },
           error: (error) => {
               console.error('Error placing order', error);   
           }
       });
   }
+
+  clearCart() {
+    const userId = this.authService.getUserId();
+    localStorage.removeItem(`cart_${userId}`);
+    this.cartService.clearCart();
+  }
+
+  redirectToSuccess() {
+    this.router.navigate(['/payment-success']);
+  }
+
+
+  validateAndPlaceOrder() {
+    const validationResult = this.giftCardService.validate(this.giftCardCode);
+    if (validationResult.valid) {
+      this.processPayment(validationResult.balance, this.totalAmount);
+    } else {
+      this.errorMessage = 'Invalid or expired gift card.';
+    }
+  }
+
+  processPayment(balance: number, orderTotal: number) {
+    if (balance >= orderTotal) {
+      console.log('Processing payment with gift card.');
+      this.onPlaceOrder(true); 
+    } else {
+      this.errorMessage = 'Insufficient balance on gift card.';
+      this.onPlaceOrder(false);
+    }
+  }
+  
+
 
   private calculateTotalPrice(orderItems: OrderItem[]): number {
     return orderItems.reduce((total, item) => total + (item.price * item.qte), 0);

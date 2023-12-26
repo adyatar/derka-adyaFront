@@ -29,9 +29,11 @@
               <label for="email" class="mt-4 mb-2 block text-sm font-medium">Gift Card</label>
               <div class="flex">
                 <div class="relative w-7/12 flex-shrink-0">
-                  <input type="text" id="card-no" name="card-no" class="w-full rounded-md border border-gray-200 px-2 py-3  text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="xxxx-xxxx-xxxx-xxxx" />
-                </div>
-              </div>
+                  <form class="flex flex-wrap">
+                    <input type="text" id="card-no" [(ngModel)]="giftCardCode" name="giftCardCode" class="w-full rounded-md border border-gray-200 px-2 py-3  text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" required placeholder="xxxx-xxxx-xxxx-xxxx" />
+                  </form>   
+                  <div *ngIf="errorMessage" class="text-red-500 text-xs italic">{{ errorMessage }}</div>
+                </div> </div>
               <!-- Total -->
               <div class="mt-6 border-t border-b py-2">
                 <div class="flex items-center justify-between">
@@ -48,7 +50,7 @@
                 <p class="text-2xl font-semibold text-gray-900">${{totalAmount}}</p>
               </div>
             </div>
-            <button (click)="onPlaceOrder()" class="mt-4 mb-8 w-full rounded-md bg-headerColor px-6 py-3 font-medium text-white">Place Order</button>
+            <button (click)="validateAndPlaceOrder()" class="mt-4 mb-8 w-full rounded-md bg-headerColor px-6 py-3 font-medium text-white">Place Order</button>
         </div>
         }
         @else {
@@ -100,4 +102,5 @@
       
     </div>
   </div>
+  
   

@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, mapTo, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
 import { environment } from '../../../environment';
 import { Router } from '@angular/router';
 import {jwtDecode} from 'jwt-decode';
 import { CartItem } from '../../models/cartItem.model';
 import { TokenRequest } from '../../models/tokenrequest.model';
+import { UserRequest } from '../../models/user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -118,6 +119,23 @@ export class AuthService {
       return decodedToken.userId;
     }
      return 0;
+  }
+
+
+
+  register(email: string, password: string,name:string):Observable<boolean>{
+    const requestData: UserRequest = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    return this.http.post<any>(`${this.apiUrl}/register`, requestData).pipe(
+      map(response => true), // Assume success if the request is completed
+      catchError(error => {
+        console.error('Registration error:', error);
+        return of(false);
+      })
+    );
   }
 
 }

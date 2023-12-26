@@ -3,7 +3,7 @@ import { CartItem } from '../models/cartItem.model';
 import { Product } from '../models/product.model';
 import { AuthService } from './Security/auth.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,9 @@ export class CartService {
  private cart: CartItem[] = [];
  private cartSubject = new BehaviorSubject<CartItem[]>([]);
  private userId!: number | '0';
-
+ cartItemCount = this.cartSubject.asObservable().pipe(
+  map(items => items.length)
+);
  constructor(private authService: AuthService, private route: Router) {
   this.authService.isAuthenticatedUser().subscribe(isAuth => {
     this.userId = isAuth ? this.authService.getUserId() : '0';
@@ -46,6 +48,7 @@ addToCart(product: Product): void {
         }
       };
       this.cart.push(newCartItem);
+      this.cartSubject.next(this.cart);
       this.route.navigate(['/cart']);
     }
 
@@ -79,10 +82,14 @@ private saveCart(): void {
 
 removeItem(productId: number): void {
   this.cart = this.cart.filter(item => item.productId !== productId);
-  console.log(this.cart.length);
   localStorage.removeItem(`cart_${this.userId}`);
-  
   this.saveCart();
+}
+
+clearCart() {
+  const userId = this.authService.getUserId();
+  localStorage.removeItem(`cart_${userId}`);
+  this.cartSubject.next([]);
 }
 
 getCartItems(): Observable<CartItem[]> {

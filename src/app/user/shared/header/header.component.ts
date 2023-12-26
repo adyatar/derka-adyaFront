@@ -3,6 +3,8 @@ import {  RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/Security/auth.service';
 import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import { CartService } from '../../../services/cart.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   standalone:true,
-  imports:[RouterModule]
+  imports:[RouterModule,CommonModule]
 })
 export class HeaderComponent implements OnInit {
  
@@ -21,7 +23,7 @@ export class HeaderComponent implements OnInit {
   user!:User | null
 
   constructor(private userservice:UserService,
-    private authService: AuthService) { }
+    private authService: AuthService,private cartService:CartService) { }
 
   ngOnInit(): void {
     this.authService.isAuthenticatedUser().subscribe(status => {
@@ -36,6 +38,10 @@ export class HeaderComponent implements OnInit {
         }
       }
     }); 
+
+    this.cartService.cartItemCount.subscribe(count => {
+      this.cartItemCount = count;
+    });
    }
 
 

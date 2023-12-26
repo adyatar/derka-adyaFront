@@ -8,14 +8,15 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 
 @NgModule({
     declarations: [
-        AccountComponent,
+        AccountComponent
     ],
     exports: [],
     imports: [
         CommonModule,
         AccountRoutingModule,
         NavbarComponent,
-        SidebarComponent
+        SidebarComponent,
+        
     ],
     providers:[]
 })

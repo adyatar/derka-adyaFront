@@ -1,3 +1,136 @@
-<h2 class="pb-4 mb-8 border-b-black text-lg font-extrabold ">Historique de vos commandes
-</h2>
-<aside id="notifications" class="/js notifications-container"><article class="alert alert-warning" role="alert" data-alert="warning"><ul><li>Vous n'avez pas encore passé de commande</li></ul></article></aside>
+@if (orders.length>0) {
+  <div class="gx tv ari cxg dda"><h1 class="text-3xl font-bold">Order history</h1><p class="lb awa axr">Check the status of recent orders, manage returns, and discover similar products.</p></div>
+  @for (order of orders; track $index) {
+    <div class="aff afm mt-16 afu alo bbn cdj cdu">
+      <h3 class="t">
+        Order placed on <time datetime="2021-07-06">Jul 6, 2021</time>
+      </h3>
+      <div class="lx yz aff afu aqt bxu cav cbz ceq">
+        <dl class="mb um yi aai awa bug cau crw">
+          <div>
+            <dt class="awe axv">Order number</dt>
+            <dd class="ku axr">{{randomCode}}</dd>
+          </div>
+          <div class="md bxo">
+            <dt class="awe axv">Date placed</dt>
+            <dd class="ku axr">{{order.orderDate | dateFormat}}</dd>
+          </div>
+          <div>
+            <dt class="awe axv">Total amount</dt>
+            <dd class="ku awe axv">${{order.totalPrice | number: '1.2-2'}}</dd>
+          </div>
+        </dl>
+        <div class="ab lx zd cvc" data-headlessui-state="">
+          <div class="lx yz">
+            <button
+              class="fs lx yz aqq axp bkx"
+              id="headlessui-menu-button-1"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              data-headlessui-state=""
+            >
+              <span class="t">Options for order WU88191111</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                class="oc se"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="md crw cuy czg czj dak">
+          <a
+            href="#"
+            class="lx yz ze adu aez afv alo are arv awa awe axt bbn bih bmz bne bnq bog"
+            ><span>View Order</span><span class="t">WU88191111</span></a
+          ><a
+            href="#"
+            class="lx yz ze adu aez afv alo are arv awa awe axt bbn bih bmz bne bnq bog"
+            ><span>View Invoice</span><span class="t">for order WU88191111</span></a
+          >
+        </div>
+      </div>
+      <h4 class="t">Items</h4>
+      <ul role="list" class="acc acg">
+        @for (item of order.orderItems; track $index) {
+          <li class="aqt ceq">
+            <a [routerLink]="['/detail', item.productId]">
+              <div class="lx yz cbg">
+                <div class="np rq up adg adt ail bye bza">
+                  <img
+                    src="assets/images/{{item.product?.image_prod}}"
+                    alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
+                    class="ph tn aqe aqf"
+                  />
+                </div>
+                <div class="jz um awa">
+                  <div class="awe axv bxr cbo">
+                    <h5>{{item.product?.name_prod}}</h5>
+                    <p class="lb bwv">${{item.price | number: '1.2-2'}}</p>
+                  </div>
+                  <p class="md axr bxb bxo">
+                    {{item.product?.desc_prod}}
+                  </p>
+                </div>
+              </div>
+            </a>
+           
+            <div class="lk bxr cbo">
+              <div class="lx yz">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="nz sb axx"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <p class="jt awa awe axr">
+                  Delivered on <time datetime="2021-07-12">July 12, 2021</time>
+                </p>
+              </div>
+              <div class="lk lx yz abj acb acg afm afu avb awa awe bwj bwv cec cgz">
+                <div class="lx um ze">
+                  <a  class="adm ayh blf">View product</a>
+                </div>
+                <div class="lx um ze atn">
+                  <a [routerLink]="['/detail', item.productId]" class="adm ayh blf">Buy again</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        }
+        
+      </ul>
+    </div>
+  }
+  
+  
+}@else {
+  <h2 class="pb-4 mb-8 border-b-black text-lg font-extrabold">
+    Your order history
+  </h2>
+  <aside id="notifications" class="/js notifications-container">
+    <article class="alert alert-warning" role="alert" data-alert="warning">
+      <ul>
+        <li>You have not placed an order yet</li>
+      </ul>
+    </article>
+  </aside>
+}

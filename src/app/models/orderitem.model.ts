@@ -5,4 +5,5 @@ export interface OrderItem {
   qte: number;
   price: number;
   productId: number;
+  product?:Product
   }
