@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FeatureSectionComponent } from '../../shared/feature-section/feature-section.component';
 import { ProductSectionComponent } from '../home/product-section/product-section.component';
 import { ProductCardComponent } from "../../shared/product-card/product-card.component";
@@ -10,6 +10,7 @@ import { ProductService } from '../../../services/product.service';
 import { CartItem } from '../../../models/cartItem.model';
 import { CartService } from '../../../services/cart.service';
 import { AuthService } from '../../../services/Security/auth.service';
+import { CheckoutService } from '../../../services/checkout.service';
 
 
 @Component({
@@ -20,12 +21,11 @@ import { AuthService } from '../../../services/Security/auth.service';
     imports: [CommonModule, ProductSectionComponent, RouterModule, ProductCardComponent, SlickCarouselModule, FeatureSectionComponent]
 })
 export class CartComponent implements OnInit {
-
   cartItems: CartItem[] = [];
   cartProducts: Product[] = [];
+  private userId = this.authService.getUserId();
 
-
-constructor(private productService:ProductService,private cartService:CartService,private authService: AuthService){}
+constructor(private productService:ProductService,private cartService:CartService,private authService: AuthService,private checkoutService:CheckoutService,private route:Router){}
 
 
 handleAddToCart(arg0: any) {
@@ -33,12 +33,15 @@ console.log(arg0);
 }
 
 ngOnInit(): void {
+  this.cartService.getCartItems().subscribe(items => {
+    this.cartItems = items;
+  });
   this.loadCartItems();
  }
  
  loadCartItems(): void {
-  const userId = this.authService.getUserId() || 'unauthenticated';
-  const cartData = localStorage.getItem(`cart_${userId}`);
+  
+  const cartData = localStorage.getItem(`cart_${this.userId}`);
   if (cartData) {
     this.cartItems = JSON.parse(cartData);
   }
@@ -47,32 +50,20 @@ ngOnInit(): void {
 increaseQuantity(index: number): void {
   if (index >= 0 && index < this.cartItems.length) {
     this.cartItems[index].qte += 1;
-    this.cartService.updateCart(this.cartItems); // Update via CartService
+    this.cartService.updateCart(this.cartItems);
   }
 }
 
 decreaseQuantity(index: number): void {
   if (index >= 0 && index < this.cartItems.length && this.cartItems[index].qte > 1) {
     this.cartItems[index].qte -= 1;
-    this.cartService.updateCart(this.cartItems); // Update via CartService
+    this.cartService.updateCart(this.cartItems);
   }
 }
 
 calculateTotal(): number {
   return this.calculateSubtotal() + this.calculateShipping();
 }
-
-
-removeItem(index: number) {
-  this.cartItems.splice(index, 1);
-  const userId = this.authService.getUserId() || 'unauthenticated';
-  const cartKey = `cart_${userId}`;
-  localStorage.setItem(cartKey, JSON.stringify(this.cartItems));
-  this.cartService.updateCart(this.cartItems);
-}
-
-
-
 
 calculateShipping(): number {
   return this.cartItems.length > 0 ? 5.00 : 0; 
@@ -81,6 +72,27 @@ calculateShipping(): number {
 calculateSubtotal(): number {
   return this.cartItems.reduce((total, item) => total + (item.price * item.qte), 0);
 }
+
+removeItem(index: number): void {
+  if (index >= 0 && index < this.cartItems.length) {
+    const productId = this.cartItems[index].productId;    
+    if (productId !== undefined) {
+      this.cartService.removeItem(productId);
+    }
+  }
+}
+
+
+onCheckout(){
+  this.route.navigate(['checkout']);
+ // localStorage.removeItem(`cart_${this.userId}`)
+}
+
+
+
+
+
+
 
  slideConfig = {dots:true,loop:false,draggable:false,arrows:false,mobileFirst: true,
   responsive: [

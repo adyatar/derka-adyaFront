@@ -53,8 +53,8 @@ export class AuthService {
   private handleLogin(response: any) {
     this.authToken = response.accessToken;
     localStorage.setItem(this.authTokenKey, this.authToken);
-    this.loadUserRoleFromToken();
     this.isAuthenticated.next(true);
+    this.loadUserRoleFromToken();
     this.mergeCarts();
   }
 
@@ -69,19 +69,27 @@ export class AuthService {
   }
 
   private mergeCarts() {
-    const unauthCartData = localStorage.getItem('cart_unauthenticated');
+    const unauthCartData = localStorage.getItem('cart_0');
     const userId = this.getUserId();
     if (unauthCartData && userId) {
       const unauthCart: CartItem[] = JSON.parse(unauthCartData);
       const authCartKey = `cart_${userId}`;
       const authCartData = localStorage.getItem(authCartKey);
       const authCart: CartItem[] = authCartData ? JSON.parse(authCartData) : [];
-      const mergedCart = [...authCart, ...unauthCart];
-      localStorage.setItem(authCartKey, JSON.stringify(mergedCart));
-      localStorage.removeItem('cart_unauthenticated');
+      for (const unauthItem of unauthCart) {
+        const existingItem = authCart.find(authItem => authItem.productId === unauthItem.productId);
+        if (existingItem) {
+          existingItem.qte += unauthItem.qte;
+        } else {
+          authCart.push(unauthItem);
+        }
+      }
+      localStorage.setItem(authCartKey, JSON.stringify(authCart));
+      localStorage.removeItem('cart_0');
     }
   }
 
+  
   isAuthenticatedUser(): Observable<boolean> {
     return this.isAuthenticated.asObservable();
   }

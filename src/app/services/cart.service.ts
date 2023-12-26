@@ -3,7 +3,7 @@ import { CartItem } from '../models/cartItem.model';
 import { Product } from '../models/product.model';
 import { AuthService } from './Security/auth.service';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +11,25 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
  private cart: CartItem[] = [];
  private cartSubject = new BehaviorSubject<CartItem[]>([]);
- private userId!: number | 'unauthenticated';
+ private userId!: number | '0';
 
- constructor(private authService:AuthService,private route:Router) { 
+ constructor(private authService: AuthService, private route: Router) {
   this.authService.isAuthenticatedUser().subscribe(isAuth => {
-    this.userId = isAuth ? this.authService.getUserId() : 'unauthenticated';
-    this.loadUserCart(this.userId);
+    this.userId = isAuth ? this.authService.getUserId() : '0';
+    this.loadUserCart();
   });
-  
 }
 
 
-loadUserCart(userId: number| 'unauthenticated'): void {
-  const cartData = localStorage.getItem(`cart_${userId}`);
-  this.cart = cartData ? JSON.parse(cartData) : [];
-  this.cartSubject.next(this.cart);
-}
+private loadUserCart(): void {
+    const cartData = localStorage.getItem(`cart_${this.userId}`);
+    this.cart = cartData ? JSON.parse(cartData) : [];
+    this.cartSubject.next(this.cart);
+  }
 
 
 addToCart(product: Product): void {
-    const userId = this.authService.getUserId() || 'unauthenticated';  
+    const userId = this.authService.getUserId() || '0';  
     let existingCartItem = this.cart.find(p => p.productId === product.id_prod);
     if (existingCartItem) {
       existingCartItem.qte++;
@@ -72,9 +71,22 @@ updateCart(updatedCart: CartItem[]): void {
 }
 
 private saveCart(): void {
-  this.cartSubject.next(this.cart); // Update the BehaviorSubject with the new cart state
+  this.cartSubject.next(this.cart); 
   const cartKey = `cart_${this.userId}`;
-  localStorage.setItem(cartKey, JSON.stringify(this.cart)); // Save the cart to local storage
+  localStorage.setItem(cartKey, JSON.stringify(this.cart)); 
+}
+
+
+removeItem(productId: number): void {
+  this.cart = this.cart.filter(item => item.productId !== productId);
+  console.log(this.cart.length);
+  localStorage.removeItem(`cart_${this.userId}`);
+  
+  this.saveCart();
+}
+
+getCartItems(): Observable<CartItem[]> {
+  return this.cartSubject.asObservable();
 }
 
 }

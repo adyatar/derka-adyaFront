@@ -1,0 +1,103 @@
+  <app-navbar></app-navbar>
+  <div class="grid  lg:grid-cols-2 ">
+    <div class="px-20 pt-8">
+      <p class="text-xl font-medium">Order Summary</p>
+      <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
+      <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+        @for (item of cartItems; track $index) {
+            <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+                <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="assets/images/{{item.product.image_prod}}" alt="" />
+                <div class="flex w-full flex-col px-4 py-4 relative">
+                  <span class="font-semibold">{{item.product.name_prod}}</span>
+                  <p class="text-lg font-bold">${{item.price}}</p>
+                  <span class="absolute top-0 right-0 inline-flex items-center justify-center h-6 w-6 rounded-full ms-2 text-xs font-semibold text-blue-800 bg-blue-200 ">
+                    {{item.qte}}
+                    </span>
+                </div>
+                
+              </div>
+        }
+        
+      </div>
+    </div>
+    <div class="mt-10 bg-bgColor h-screen px-20 pt-8 lg:mt-0">
+        @if(isLoggedIn){
+          <div >
+            <p class="text-xl font-medium">Payment Details</p>
+            <p class="text-gray-400">Complete your order by providing your payment details.</p>
+            <div class="">
+              <label for="email" class="mt-4 mb-2 block text-sm font-medium">Gift Card</label>
+              <div class="flex">
+                <div class="relative w-7/12 flex-shrink-0">
+                  <input type="text" id="card-no" name="card-no" class="w-full rounded-md border border-gray-200 px-2 py-3  text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="xxxx-xxxx-xxxx-xxxx" />
+                </div>
+              </div>
+              <!-- Total -->
+              <div class="mt-6 border-t border-b py-2">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-900">Subtotal</p>
+                  <p class="font-semibold text-gray-900">${{subTotal}}</p>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-medium text-gray-900">Shipping</p>
+                  <p class="font-semibold text-gray-900">$5.00</p>
+                </div>
+              </div>
+              <div class="mt-6 flex items-center justify-between">
+                <p class="text-sm font-medium text-gray-900">Total</p>
+                <p class="text-2xl font-semibold text-gray-900">${{totalAmount}}</p>
+              </div>
+            </div>
+            <button (click)="onPlaceOrder()" class="mt-4 mb-8 w-full rounded-md bg-headerColor px-6 py-3 font-medium text-white">Place Order</button>
+        </div>
+        }
+        @else {
+          <h2 class="pb-4 mb-8 border-b-black text-lg font-extrabold ">Please Sign In</h2>
+          <div >
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4 md:space-y-6">
+              <div>
+                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
+                  <input formControlName="email" type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@company.com" required="">
+                  <p class="text-red-500 text-xs italic" *ngIf="loginForm.get('email').errors?.required && loginForm.get('email').touched">
+                      Email is required.
+                  </p>
+                  <p class="text-red-500 text-xs italic" *ngIf="loginForm.get('email').errors?.email && loginForm.get('email').touched">
+                      Please enter a valid email address.
+                  </p>
+              </div>
+              <div>
+                  <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+                  <input formControlName="password" type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+                  <p class="text-red-500 text-xs italic" *ngIf="loginForm.get('password').errors?.required && loginForm.get('password').touched">
+                      Password is required.
+                  </p>
+                  <div *ngIf="loginError" class="text-red-500 text-sm font-semibold">
+                      {{ loginError }}
+                    </div>
+              </div>
+              <div class="flex items-center justify-between">
+                  <div class="flex items-start">
+                      <div class="flex items-center h-5">
+                        <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required="">
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="remember" class="text-gray-500 ">Remember me</label>
+                      </div>
+                  </div>
+                  <a href="#" class="text-sm font-medium text-primary-600 hover:underline ">Forgot password?</a>
+              </div>
+              <button type="submit" class="w-full text-white bg-headerColor focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+              <p class="text-sm font-light text-gray-500 ">
+                  Don’t have an account yet? <a routerLink="/register" class="font-medium text-primary-600 hover:underline ">Sign up</a>
+              </p>
+          </form>
+          </div>
+          
+         
+          
+          
+        }
+      
+    </div>
+  </div>
+  
