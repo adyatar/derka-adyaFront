@@ -25,4 +25,30 @@ export class ProductService {
   getAllProductsByCategory(id:number) : Observable<Product[]>{
     return this.http.get<Product[]>(`${this.apiUrl}/products/${id}`);
    } 
+   
+  deleteProductById(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/product/${id}`);
+  }
+
+  addProduct(product: Product): Observable<any> {
+    console.log("f product seervice");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post(`${this.apiUrl}/product`, product, httpOptions);
+  }
+
+  updateProduct(product: Product): Observable<any> {
+    console.log("f product seervice update");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post(`${this.apiUrl}/product/update`, product, httpOptions);
+  }
 }
