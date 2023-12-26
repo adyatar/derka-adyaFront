@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { AdminComponent } from './admin.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { HeaderComponent } from './home-admin/header/header.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AdminComponent
+  ],
   imports: [
-    CommonModule,
-    AdminRoutingModule
+    CommonModule,AdminRoutingModule
   ]
+ 
 })
 export class AdminModule { }

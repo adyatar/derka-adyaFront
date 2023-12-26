@@ -5,8 +5,8 @@ import { FeatureSectionComponent } from '../../shared/feature-section/feature-se
 import { ProductSectionComponent } from '../home/product-section/product-section.component';
 import { ProductCardComponent } from "../../shared/product-card/product-card.component";
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { Product } from '../../models/product.model';
-import { ProductService } from '../../services/product.service';
+import { Product } from '../../../models/product.model';
+import { ProductService } from '../../../services/product.service';
 
 
 @Component({

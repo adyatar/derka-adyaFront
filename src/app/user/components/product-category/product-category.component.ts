@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../models/product.model';
+import { ProductService } from '../../../services/product.service';
+import { Product } from '../../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { NgxPaginationModule, PaginatePipe } from 'ngx-pagination';
 import { FeatureSectionComponent } from '../../shared/feature-section/feature-section.component';
