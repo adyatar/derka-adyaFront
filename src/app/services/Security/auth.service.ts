@@ -87,6 +87,7 @@ export class AuthService {
       }
       localStorage.setItem(authCartKey, JSON.stringify(authCart));
       localStorage.removeItem('cart_0');
+      
     }
   }
 

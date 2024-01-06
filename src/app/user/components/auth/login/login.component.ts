@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import {  Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../../services/Security/auth.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FeatureSectionComponent } from "../../../shared/feature-section/feature-section.component";
 
 

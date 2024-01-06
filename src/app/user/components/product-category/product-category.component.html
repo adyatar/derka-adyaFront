@@ -88,7 +88,7 @@
     <div class="flex flex-wrap items-center">
         <div  *ngFor="let product of categoeyProduct | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" 
              [class]="twoColumnGrid  ? 'category-grid px-3 mb-6 w-full sl:w-1/2 md:w-1/2' : 'category-grid px-3 mb-6 w-full sl:w-1/2 md:w-1/3'">
-          <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id_prod)">
+          <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id)">
           </app-product-card>
         </div>    
     </div>

@@ -1,57 +1,46 @@
-<div class="bg-bgColor h-screen">
-    <div class="body-content">
-        <div class="navbar-menu flex flex-wrap">
-            <nav class="basis-1/4 sticky max-w-[25%] top-0 transition-all lg:mt-0 z-40 mt-16 left-0  bottom-0 flex flex-col w-[280px] lg:border-none border-r border-gray-200 px-4 " id="sidenav">
-                <div class="pb-6 mt-4 overflow-x-hidden overflow-y-auto ">
+ <aside class="fixed top-20 bottom-0 left-0 w-72 bg-sidebarColor overflow-y-auto z-10 bg-bgColor px-3">
+                <div class="flex flex-col justify-between h-full">
+                  <div class="flex-grow">
                     <div class="mb-2">
-                            <a  class=" relative flex items-center px-8 py-4 bg-white text-black  group">
-                                <div class="flex items-center justify-center w-12 h-12 mr-4 text-xl font-extrabold bg-black text-white rounded-full	 uppercase ">
-                                    {{user?.email?.slice(0, 2)}} 
-                                </div>
-                                <p class="">
-                                    <span>Hello,&nbsp;</span>
-                                    <span class="flex flex-col font-bold">{{user?.name}}</span>
-                                </p>
-                            </a>
-                        </div>
-                        <div class="mb-2">
-                            <a routerLink="/account/order" class="relative flex font-bold items-center px-8 py-4 bg-white text-black  group">
-                                <span class="text-base mr-4">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-seam" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"></path>
-                                </svg></span>
-                                History and details of orders
-                            </a>
-                        </div>
-                        <div class="mb-2">
-                            <a href="#" class=" relative flex font-bold items-center px-8 py-4 bg-white text-black  group">
-                                <span class="text-base mr-4">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"></path>
-                                  <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-                                  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path>
-                                </svg></span>
-                                Information
-                            </a>
-                        </div>
-                        <div class="mb-2 cursor-pointer">
-                            <a (click)="logOut()" class="font-bold relative flex items-center px-8 py-4 bg-white text-black  group">
-                                <span class="text-base mr-4">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"></path>
-                                  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"></path>
-                                </svg></span>
-                                Logout
-                            </a>
-                        </div>
+                      <a  class=" relative flex items-center px-8 py-4 bg-white text-black  group">
+                          <div class="flex items-center justify-center w-12 h-12 mr-4 text-xl font-extrabold bg-black text-white rounded-full	 uppercase ">
+                              {{user?.email?.slice(0, 2)}} 
+                          </div>
+                          <p class="">
+                              <span>Hello,&nbsp;</span>
+                              <span class="flex flex-col font-bold">{{user?.name}}</span>
+                          </p>
+                      </a>
+                  </div>
+                  <div class="mb-2">
+                    <a routerLink="/account/order" class="relative flex font-bold items-center px-8 py-4 bg-white text-black  group">
+                        <span class="text-base mr-4">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-seam" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"></path>
+                        </svg></span>
+                        History and details of orders
+                    </a>
                 </div>
-            </nav>
-            <div class="flex basis-9/12 max-w-[75%] rounded-xl px-5">
-                <div class="h-full py-6 px-8 w-full bg-white   rounded-xl">
-                  <router-outlet></router-outlet>
-            </div>
-            </div>
-        </div>
-    
-    </div>
-</div>
+                <div class="mb-2">
+                  <a routerLink="/account/identity" class=" relative flex font-bold items-center px-8 py-4 bg-white text-black  group">
+                      <span class="text-base mr-4">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"></path>
+                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path>
+                      </svg></span>
+                      Information
+                  </a>
+              </div>
+                  </div>
+                  <div class="p-4 ">
+                    <a (click)="logOut()" class="cursor-pointer">
+                      <button  type="button" class="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-headerColor text-gray-300 hover:text-white text-sm font-semibold transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="" viewBox="0 0 16 16">
+                          <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+                        </svg>
+                      </button> <span class="font-bold text-sm ml-2">Logout</span>
+                    </a>
+                  </div>
+                </div>
+              </aside>

@@ -16,7 +16,7 @@ import { CartService } from '../../../services/cart.service';
   ]
 })
 export class ProducDetailComponent implements OnInit{
-  product!: Product;
+  product!: Product ;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -29,7 +29,9 @@ export class ProducDetailComponent implements OnInit{
       const id = +params.get('id')!;
       if (id) {
         this.productService.getProductById(id).subscribe(product => {
-          this.product = product;
+          if(product != null){
+            this.product = product;
+          }
         }, error => {
           console.error('Error fetching product', error);
         });

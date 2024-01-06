@@ -48,7 +48,7 @@ export class AddProductComponent implements OnInit{
       qte_prod: this.productQuantity,
       image_prod: this.selectedFileName,
       idCat: this.productCategory,
-      id_prod: 0
+      id: 0
     };
 
     // Emit the event with the product data

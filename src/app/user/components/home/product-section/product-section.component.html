@@ -12,7 +12,7 @@
     [config]="slideConfig" *ngIf="dataReady"
     >
   <div ngxSlickItem *ngFor="let product of products" class="slide px-4 mb-6">
-    <app-product-card [product]="product" [productId]="product.id_prod" [isInCart]="isProductInCart(product.id_prod)" (addToCart)="addToCart(product)"></app-product-card>
+    <app-product-card [product]="product" [productId]="product.id" [isInCart]="isProductInCart(product.id)" (addToCart)="addToCart(product)"></app-product-card>
   </div>
 </ngx-slick-carousel>
 </div>

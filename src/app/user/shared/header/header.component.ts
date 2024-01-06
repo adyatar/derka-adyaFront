@@ -36,10 +36,11 @@ export class HeaderComponent implements OnInit {
             error => console.log(error)   
           );
         }
+        this.cartService.loadUserCart(); 
       }
     }); 
 
-    this.cartService.cartItemCount.subscribe(count => {
+    this.cartService.cartItemCount.subscribe(count => {            
       this.cartItemCount = count;
     });
    }

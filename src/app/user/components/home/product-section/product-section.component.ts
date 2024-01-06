@@ -63,8 +63,8 @@ constructor(private productService: ProductService,private categorySrv:CategoryS
     
    getAllCategories(){
     this.categorySrv.getAllCategories().subscribe(
-      (data)=>{this.category=data}
-    );
+      (data)=>{this.category=data}   
+       );
    }
 
    

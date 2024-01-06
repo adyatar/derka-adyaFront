@@ -58,10 +58,13 @@
                             <span>Subtotal</span>
                             <span>${{ calculateSubtotal() | number: '1.2-2' }}</span>
                         </div>
-                      
                         <div class="flex justify-between mb-2">
                             <span>Shipping</span>
-                            <span>${{ calculateShipping() | number: '1.2-2' }}</span>
+                            @if(calculateSubtotal()>500){
+                                <span>Free</span>
+                            }@else {
+                                <span>${{ calculateShipping() | number: '1.2-2' }}</span>
+                            }
                         </div>
                         <hr class="my-2">
                         <div class="flex justify-between mb-2">
@@ -102,7 +105,7 @@
     [config]="slideConfig" 
     >
   <div ngxSlickItem *ngFor="let product of cartProducts" class="slide px-4 mb-6">
-    <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id_prod)"></app-product-card>
+    <app-product-card [product]="product" (addToCart)="handleAddToCart(product.id)"></app-product-card>
   </div>
 </ngx-slick-carousel>
 </div>

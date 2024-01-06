@@ -16,4 +16,12 @@ export class UserService {
   getUserProfile(id:number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/user/${id}`);
   }
+
+  updateUserProfile(id:number,user:User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/user/${id}`,user);
+  }
+
+  testFileUpload(id:number,data:any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users/${id}/update-profile`,data);
+  }
 }

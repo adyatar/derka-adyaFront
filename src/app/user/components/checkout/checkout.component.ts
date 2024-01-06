@@ -6,7 +6,6 @@ import { NavbarComponent } from '../account/navbar/navbar.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Order } from '../../../models/order.model';
 import { CheckoutService } from '../../../services/checkout.service';
-import { CartItem } from '../../../models/cartItem.model';
 import { OrderItem } from '../../../models/orderitem.model';
 import { CartService } from '../../../services/cart.service';
 import { GiftcardService } from '../../../services/giftcard.service';
@@ -23,6 +22,7 @@ export class CheckoutComponent implements OnInit {
   cartItems!: any[];
   totalAmount!: number;
   subTotal!:number;
+  totalOrder!: number;
   loginForm?: any;
   loginError!: string;
   giftCardCode: string = '';
@@ -78,13 +78,14 @@ export class CheckoutComponent implements OnInit {
 
     private getCartItems() {
       const userId = this.authService.getUserId();
-      return JSON.parse(localStorage.getItem(`cart_${userId}`) || 'cart_0');
+      const cartKey = userId ? `cart_${userId}` : 'cart_0';
+      const cartData = localStorage.getItem(cartKey);
+      return cartData ? JSON.parse(cartData) : [];    
     }
 
-
     private calculateTotal(): number {
-      let total = this.subTotal+5;
-      return total;
+      this.totalOrder = this.subTotal + this.calculateShipping();
+      return this.totalOrder;
     }
 
     private calculateSubTotal(items: any[]):number{
@@ -93,6 +94,10 @@ export class CheckoutComponent implements OnInit {
         subTotal += (item.price * item.qte);
       }
       return subTotal;
+    }
+
+    calculateShipping(): number {
+      return this.subTotal > 500 ? 0 : 15; 
     }
 
 
@@ -110,7 +115,7 @@ export class CheckoutComponent implements OnInit {
       const order: Order = {
         orderItems: orderItems,
         userId: userId,
-        totalPrice: this.calculateTotalPrice(orderItems),
+        totalPrice: this.calculateTotal(),
         orderDate: new Date().toISOString()
       };
       this.checkoutService.placeOrder(order).subscribe({
@@ -120,20 +125,16 @@ export class CheckoutComponent implements OnInit {
           },
           error: (error) => {
               console.error('Error placing order', error);   
+              this.errorMessage = 'Error occurred while placing the order. Please try again.';
+
           }
       });
-  }
-
-  clearCart() {
-    const userId = this.authService.getUserId();
-    localStorage.removeItem(`cart_${userId}`);
-    this.cartService.clearCart();
   }
 
   redirectToSuccess() {
     this.router.navigate(['/payment-success']);
   }
-
+  
 
   validateAndPlaceOrder() {
     const validationResult = this.giftCardService.validate(this.giftCardCode);
@@ -153,11 +154,6 @@ export class CheckoutComponent implements OnInit {
       this.onPlaceOrder(false);
     }
   }
-  
 
-
-  private calculateTotalPrice(orderItems: OrderItem[]): number {
-    return orderItems.reduce((total, item) => total + (item.price * item.qte), 0);
-  }
 
 }

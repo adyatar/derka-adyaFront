@@ -11,13 +11,10 @@ export class OrderService {
 
   private apiUrl = environment.orderService;
 
-
   constructor(private http:HttpClient) { }
 
-
-getAllOrdersByUserId(id:number):Observable<Order[]>{
-  return this.http.get<Order[]>(`${this.apiUrl}/user/${id}`)
+getAllOrdersByUserId():Observable<Order[]>{
+  return this.http.get<Order[]>(`${this.apiUrl}/userOrders`)
 }
-
 
 }

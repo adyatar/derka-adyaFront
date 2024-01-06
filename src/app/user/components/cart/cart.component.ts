@@ -40,7 +40,6 @@ ngOnInit(): void {
  }
  
  loadCartItems(): void {
-  
   const cartData = localStorage.getItem(`cart_${this.userId}`);
   if (cartData) {
     this.cartItems = JSON.parse(cartData);
@@ -66,7 +65,7 @@ calculateTotal(): number {
 }
 
 calculateShipping(): number {
-  return this.cartItems.length > 0 ? 5.00 : 0; 
+  return this.calculateSubtotal() > 500 ? 0 : 15; 
 }
 
 calculateSubtotal(): number {
@@ -85,13 +84,7 @@ removeItem(index: number): void {
 
 onCheckout(){
   this.route.navigate(['checkout']);
- // localStorage.removeItem(`cart_${this.userId}`)
 }
-
-
-
-
-
 
 
  slideConfig = {dots:true,loop:false,draggable:false,arrows:false,mobileFirst: true,

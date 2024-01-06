@@ -7,6 +7,7 @@ import { roleGuard } from '../../../services/Security/role.guard';
 const routes: Routes = [
   {path:'',component:AccountComponent,canActivate:[authGuard,roleGuard],data: { role: 'USER' },children:[
     {path: 'order',loadComponent:()=> import('./order/order.component').then(m=>m.OrderComponent)},
+    {path: 'identity',loadComponent:()=> import('./userinfo/userinfo.component').then(m=>m.UserinfoComponent)},
   ]}
 ];
 

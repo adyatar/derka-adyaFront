@@ -43,7 +43,7 @@ ngOnInit(): void {
   submitProduct() {
     // Create a product object based on your Product interface
     const productData: Product = {
-      id_prod: this.product.id_prod, // Assuming this will be set by your backend or database
+      id: this.product.id, // Assuming this will be set by your backend or database
       name_prod: this.product.name_prod,
       desc_prod: this.product.desc_prod,
       price: this.product.price,

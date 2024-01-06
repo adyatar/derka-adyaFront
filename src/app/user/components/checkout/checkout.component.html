@@ -1,10 +1,13 @@
   <app-navbar></app-navbar>
-  <div class="grid  lg:grid-cols-2 ">
+  <div class="pt-20 h-screen">
+  <div class="grid lg:grid-cols-2 bg-bgColor border">
     <div class="px-20 pt-8">
+      @if(cartItems && cartItems.length > 0){
       <p class="text-xl font-medium">Order Summary</p>
       <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
       <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-        @for (item of cartItems; track $index) {
+       
+          @for (item of cartItems; track $index) {
             <div class="flex flex-col rounded-lg bg-white sm:flex-row">
                 <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="assets/images/{{item.product.image_prod}}" alt="" />
                 <div class="flex w-full flex-col px-4 py-4 relative">
@@ -16,9 +19,11 @@
                 </div>
                 
               </div>
-        }
-        
-      </div>
+        }  
+       </div>
+      }@else if(!cartItems || cartItems.length === 0) {
+        <p class="text-gray-400">No items in cart</p>
+      }
     </div>
     <div class="mt-10 bg-bgColor h-screen px-20 pt-8 lg:mt-0">
         @if(isLoggedIn){
@@ -42,7 +47,11 @@
                 </div>
                 <div class="flex items-center justify-between">
                   <p class="text-sm font-medium text-gray-900">Shipping</p>
-                  <p class="font-semibold text-gray-900">$5.00</p>
+                  @if(subTotal>500){
+                    <p class="font-semibold text-gray-900">Free</p>
+                  }@else {
+                    <p class="font-semibold text-gray-900">${{ calculateShipping() | number: '1.2-2' }}</p>
+                  }
                 </div>
               </div>
               <div class="mt-6 flex items-center justify-between">
@@ -103,4 +112,4 @@
     </div>
   </div>
   
-  
+  </div>

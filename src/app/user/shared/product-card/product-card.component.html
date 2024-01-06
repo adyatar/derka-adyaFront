@@ -1,8 +1,8 @@
  <div class="cursor-pointer dark:bg-white bg-slate-700 shadow-md rounded-xl duration-500 hover:scale-102 hover:shadow-xl">
               <a [routerLink]="['/detail', productId]" (click)="goToProductDetail()" >
-                <div class="relative">
+                <div class="relative p-4">
                     <img [src]="'assets/images/'+ product.image_prod"
-                    alt="{{product.name_prod}}" class="h-80 w-full mx-auto object-contain rounded-t-xl product-image" />
+                    alt="{{product.name_prod}}" class="h-60 w-full mx-auto object-contain rounded-t-xl product-image" />
                 </div>  
               </a>
               <div class="px-4 py-3 ">

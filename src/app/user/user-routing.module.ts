@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from "./user.component";
+import { checkoutGuard } from '../services/Security/checkout.guard';
 const routes: Routes = [
   {
     path: '',
@@ -16,9 +17,9 @@ const routes: Routes = [
     ]
   },
   { path:'account',loadChildren:()=>import('./components/account/account.module').then(m=>m.AccountModule)},
-  {path: 'checkout',loadComponent:()=> import('./components/checkout/checkout.component').then(m=>m.CheckoutComponent)},
-  { path: 'payment-success', loadComponent: () => import('./components/payment-success/payment-success.component').then(m => m.PaymentSuccessComponent) },
-  
+  {path: 'checkout',canActivate: [checkoutGuard],loadComponent:()=> import('./components/checkout/checkout.component').then(m=>m.CheckoutComponent)},
+  { path: 'payment-success', loadComponent: () => import('./components/payment-success/payment-success.component').then(m => m.PaymentSuccessComponent) }
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
