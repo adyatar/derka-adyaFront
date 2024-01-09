@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { initFlowbite } from 'flowbite';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
+import { AuthService } from './services/Security/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +18,6 @@ constructor(private router:Router) {
 }
 
   ngOnInit(): void {
-    initFlowbite();
   }
-
-
   title = 'e-ADK';
 }

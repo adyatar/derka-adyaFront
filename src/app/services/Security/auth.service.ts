@@ -7,6 +7,7 @@ import {jwtDecode} from 'jwt-decode';
 import { CartItem } from '../../models/cartItem.model';
 import { TokenRequest } from '../../models/tokenrequest.model';
 import { UserRequest } from '../../models/user.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,7 @@ export class AuthService {
 
   constructor(private http:HttpClient,private router:Router) { 
     this.isAuthenticated.next(!!localStorage.getItem(this.authTokenKey));
-    this.loadUserRoleFromToken();
+    this.loadDataFromToken();
 
   }
 
@@ -55,16 +56,18 @@ export class AuthService {
     this.authToken = response.accessToken;
     localStorage.setItem(this.authTokenKey, this.authToken);
     this.isAuthenticated.next(true);
-    this.loadUserRoleFromToken();
+    this.loadDataFromToken();
     this.mergeCarts();
   }
 
-  private loadUserRoleFromToken() {
+  private loadDataFromToken() {
     const token = localStorage.getItem(this.authTokenKey);
     if (token) {
       const decodedToken = jwtDecode<any>(token);
       const userRole = decodedToken.scope;
+      const expirationDuration = decodedToken.exp * 1000 - Date.now();      
       this.userRole.next(userRole);
+      this.autoLogOut(expirationDuration);
       this.isAuthenticated.next(true);
     }
   }
@@ -101,6 +104,12 @@ export class AuthService {
     localStorage.removeItem(this.authTokenKey);
     this.isAuthenticated.next(false);
     this.router.navigate(['/login']); 
+  }
+
+  autoLogOut(expirationDuration: number) {
+    setTimeout(() => {      
+      this.logout();
+    }, expirationDuration);
   }
 
 

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './services/Security/authInterceptor.service';
 import { ErrorhandlerInterceptor } from './services/Security/errorhandler.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,11 @@ import { ErrorhandlerInterceptor } from './services/Security/errorhandler.servic
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi: true
   },{
     provide : HTTP_INTERCEPTORS,useClass:ErrorhandlerInterceptor,multi:true
   }],

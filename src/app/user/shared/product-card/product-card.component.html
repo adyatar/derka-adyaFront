@@ -1,4 +1,4 @@
- <div class="cursor-pointer dark:bg-white bg-slate-700 shadow-md rounded-xl duration-500 hover:scale-102 hover:shadow-xl">
+ <div class="cursor-pointer  bg-white shadow-md rounded-xl duration-500 hover:scale-102 hover:shadow-xl">
               <a [routerLink]="['/detail', productId]" (click)="goToProductDetail()" >
                 <div class="relative p-4">
                     <img [src]="'assets/images/'+ product.image_prod"
@@ -15,15 +15,28 @@
                           <p class="text-sm text-gray-600 cursor-auto ml-2">discount</p>
                       </del>
                   </div>  
-                    <button [disabled]="isInCart" [class]="isInCart ? 'text-red-600 cursor-not-allowed' : ''" (click)="onAddToCart()" class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                        </svg>
+                  @if(!isInCart){
+                    <button [attr.data-tooltip-target]="'tooltip-addtocart-' + product.id" (click)="onAddToCart()" class="flex items-center rounded-full bg-headerColor px-2 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                          </svg>
+                          </button>
+                          <div id="tooltip-addtocart-{{product.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
+                            Add to cart
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                  }@else {
+                    <button [attr.data-tooltip-target]="'tooltip-viewcart-' + product.id" (click)="viewCart()" class="flex items-center rounded-full bg-red-600 px-2 py-2 text-center text-sm font-medium text-white  focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                          </svg>                        
                     </button>
+                    <div id="tooltip-viewcart-{{product.id}}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip ">
+                        View cart
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                  }
+                
                 </div>
             </div>
 </div>

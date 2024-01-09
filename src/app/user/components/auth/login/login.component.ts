@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../../services/Security/auth.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FeatureSectionComponent } from "../../../shared/feature-section/feature-section.component";
+import { initFlowbite } from 'flowbite';
 
 
 @Component({
@@ -22,11 +23,11 @@ export class LoginComponent implements OnInit{
 
 
   ngOnInit(): void {
+    initFlowbite();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
-    
   }
 
   onSubmit(): void {

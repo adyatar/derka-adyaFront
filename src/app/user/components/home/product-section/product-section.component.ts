@@ -9,6 +9,7 @@ import { CategoryService } from '../../../../services/category.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../../services/cart.service';
 import { HeaderComponent } from '../../../shared/header/header.component';
+import { initFlowbite } from 'flowbite';
 @Component({
   selector: 'app-product-section',
   templateUrl: './product-section.component.html',

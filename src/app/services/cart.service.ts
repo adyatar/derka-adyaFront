@@ -50,7 +50,6 @@ addToCart(product: Product): void {
       };
       this.cart.push(newCartItem);
       this.cartSubject.next(this.cart);
-      this.route.navigate(['/cart']);
     }
 
     localStorage.setItem(`cart_${userId}`, JSON.stringify(this.cart));

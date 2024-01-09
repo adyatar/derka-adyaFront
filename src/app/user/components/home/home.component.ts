@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { RouterModule } from '@angular/router';
 import { BrandSectionComponent } from './brand-section/brand-section.component';
@@ -8,6 +8,7 @@ import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { ProductSectionComponent } from './product-section/product-section.component';
 import { TextSlideComponent } from './text-slide/text-slide.component';
 import { FeatureSectionComponent } from '../../shared/feature-section/feature-section.component';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,10 @@ import { FeatureSectionComponent } from '../../shared/feature-section/feature-se
     SlickCarouselModule,
     RouterModule,BrandSectionComponent,CategoryCardComponent,HeroSectionComponent,ProductSectionComponent,TextSlideComponent,FeatureSectionComponent]
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {}
  
 }

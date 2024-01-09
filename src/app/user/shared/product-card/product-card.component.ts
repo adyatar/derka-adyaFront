@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../../models/product.model';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-product-card',
@@ -20,11 +21,16 @@ export class ProductCardComponent implements OnInit {
   @Output() goToProdDetail = new EventEmitter<Product>();
   @Input() productId!: number;
   
-  constructor() { }
-  ngOnInit(): void { }
+  constructor(private route:Router) { }
+  ngOnInit(): void { initFlowbite();
+  }
 
   onAddToCart() {
     this.addToCart.emit(this.product);
+  }
+
+  viewCart(){
+    this.route.navigate(['/cart']);
   }
 
   goToProductDetail(){

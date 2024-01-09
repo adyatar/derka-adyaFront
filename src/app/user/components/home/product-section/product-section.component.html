@@ -4,13 +4,10 @@
     </div>
     <nav class="flex flex-wrap justify-center">
         @for (cat of category; track $index) {
-            <button  (click)="getProductsByCategory(cat.idCat)" type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{{cat.name_cat}}</button>
+            <button  (click)="getProductsByCategory(cat.idCat)" type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-none bg-headerColor rounded-full border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 ">{{cat.name_cat}}</button>
         }
     </nav>
-    <ngx-slick-carousel class="carousel" 
-    #slickModal="slick-carousel" 
-    [config]="slideConfig" *ngIf="dataReady"
-    >
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" *ngIf="dataReady">
   <div ngxSlickItem *ngFor="let product of products" class="slide px-4 mb-6">
     <app-product-card [product]="product" [productId]="product.id" [isInCart]="isProductInCart(product.id)" (addToCart)="addToCart(product)"></app-product-card>
   </div>

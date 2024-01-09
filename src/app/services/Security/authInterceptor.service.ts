@@ -13,10 +13,7 @@ import { AuthService } from './auth.service';
 export class AuthInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) {}
   
-    intercept(
-      request: HttpRequest<any>,
-      next: HttpHandler
-    ): Observable<HttpEvent<any>> {
+    intercept( request: HttpRequest<any>,next: HttpHandler): Observable<HttpEvent<any>> {
       const authToken = localStorage.getItem("token")
       if (authToken) {
         const authRequest = request.clone({
