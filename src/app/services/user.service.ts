@@ -24,4 +24,8 @@ export class UserService {
   testFileUpload(id:number,data:any): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/${id}/update-profile`,data);
   }
+  
+  getNbrUsers():Observable<number>{
+    return this.http.get<number>(`${this.apiUrl}/users/nbr`);
+  }
 }

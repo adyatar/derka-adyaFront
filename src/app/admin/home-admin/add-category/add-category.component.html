@@ -1,0 +1,26 @@
+
+<div class=" fixed inset-0 bg-gray-600 bg-opacity-75 flex justify-center items-center px-2  mt-16">
+    <div class=" bg-white py-2 px-4  rounded-lg shadow-lg max-w-md w-full">
+      <h2 class="text-xl font-bold mb-1 text-gray-800">Add New Category</h2>
+      <form (submit)="submitcategory()" >
+        <!-- category Name -->
+        <div class="mb-2">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="category-name">Category Name<span class="text-red-500">*</span></label>
+          <input type="text" id="category-name" [(ngModel)]="name_cat" name="categoryName" class="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+        </div>
+
+        <!-- File Input for Image -->
+        <div class="mb-2">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="category">Category Image<span class="text-red-500">*</span></label>
+          <input type="file" id="category" (change)="onFileSelected($event)" class="block w-full text-sm text-gray-700 p-1 border rounded" required>
+        </div>
+  
+        <!-- Action Buttons -->
+        <div class="flex justify-between">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add category</button>
+          <button type="button" (click)="close()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

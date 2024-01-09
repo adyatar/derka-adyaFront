@@ -1,44 +1,61 @@
-<div class="flex justify-between items-baseline text-center pb-10">
-    <h1 class="ml-72 font-bold text-4xl">Products</h1>
-    <div>
-        <button (click)="openAddProduct()" class="mr-64 flex items-center px-20 py-2 font-bold text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">
-            Add product
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-        </button>
-        
-    </div>
+<div class="flex justify-between items-center bg-blue-200 p-5 shadow-lg">
+    <h1 class="text-3xl font-bold text-gray-800">Products</h1>
+    <button (click)="openAddProduct()" class="flex items-center px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+        Add product
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+    </button>
 </div>
 
 
+
+
+
 <table class="w-full text-md bg-white shadow-md rounded mb-4 ">
-    <thead class="bg-gray-400">
-        <tr class="border-b">
-            <th class="px-6 py-3 text-center text-lg font-bold text-gray-800 uppercase tracking-wider">image</th>
-            <th class="px-6 py-3 text-center text-lg font-bold text-gray-800 uppercase tracking-wider">Name</th>
-            <th class="px-6 py-3 text-center text-lg font-bold text-gray-800 uppercase tracking-wider">price</th>
-            <th class="px-6 py-3 text-center text-lg font-bold text-gray-800 uppercase tracking-wider">quantity</th>
-            <th class="px-6 py-3 text-center text-lg font-bold text-gray-800 uppercase tracking-wider">Action</th>
+    <thead class="bg-gray-300">
+        <tr >
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">
+                Image
+            </th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">
+                Name
+            </th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">
+                Price
+            </th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">
+                Quantity
+            </th>
+            <th class=" px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">
+                Action
+            </th>
         </tr>
     </thead>
-    
-    <tbody class="bg-white divide-y divide-gray-200">
+    <tbody>
         @for (product of products; track $index)
-     {
-        <tr class="border-b hover:bg-slate-400 bg-gray-100 ">
-            <td class="px-6 py-4 whitespace-nowrap text-center">
-                <img src="./assets/images/{{product.image_prod}}" alt="Description" class="w-28 h-28 mx-auto">
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">{{product.name_prod}}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">{{product.price}} $</td>
-            <td class="px-6 py-4 whitespace-nowrap text-center">{{product.qte_prod}}</td>
-            <td  class="px-6 py-4 whitespace-nowrap text-center">
-                <button (click)="openUpdate(product)" class="px-4 py-2 font-bold text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
-                <button (click)="openDeleteConfirmation(product.name_prod,product.id)" class="ml-2 px-4 py-2 font-bold text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
-            </td>
-        </tr>
-     }
+        {
+            <tr class="hover:bg-gray-400 bg-gray-100">
+                <td class="px-5 py-5 border-btext-sm">
+                            <img src="./assets/images/{{product.image_prod}}" alt="Description" class="w-28 h-28 mx-auto">
+                </td>
+                <td class="px-5 py-5 border-btext-sm text-center">
+                    {{product.name_prod}}
+                </td>
+                <td class="px-5 py-5 border-b text-sm text-center">
+                    {{product.price}} $
+                </td>
+                <td class="px-5 py-5 border-b text-sm text-center">
+                    {{product.qte_prod}}
+                </td>
+                <td class="px-5 py-5 border-b text-sm text-center">
+                    <button (click)="openUpdate(product)" class="text-white bg-green-500 hover:bg-green-600 rounded px-4 py-2 focus:outline-none">Edit</button>
+                    <button (click)="openDeleteConfirmation(product.name_prod,product.id)" class="text-white bg-red-500 hover:bg-red-600 rounded px-4 py-2 focus:outline-none ml-4">Delete</button>
+                </td>
+            </tr>
+        }
+
+
      <app-product-delete 
      *ngIf="showDeleteConfirmation" 
      [productName]="selectedProductName" 
@@ -60,6 +77,7 @@
         <!-- Repeat for other rows -->
     </tbody>
 </table>
+
 
   
 

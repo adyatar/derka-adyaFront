@@ -56,10 +56,14 @@ ngOnInit(): void {
     this.productUpdate.emit(productData);
     // Reset form fields or close modal if necessary
   }
-  onFileSelected(event: any) {
+  onFileSelected(event: any,oldImg:string) {
     const file: File = event.target.files[0];
+    console.log("file   :",file,"  oldImg  :",oldImg);
     if (file) {
       this.selectedFileName = file.name;
+    }
+    else{
+      this.selectedFileName=oldImg;
     }
   }
  
