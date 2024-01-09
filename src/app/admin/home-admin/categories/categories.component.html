@@ -1,0 +1,60 @@
+<div class="flex justify-between items-center bg-blue-200 p-5 shadow-lg">
+    <h1 class="text-3xl font-bold text-gray-800">Categories</h1>
+    <div>
+        <button (click)="openAddCategory()" class="flex items-center px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            Add category
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </button>
+        
+    </div>
+</div>
+
+
+<table class="w-full text-md bg-white shadow-md rounded mb-4 ">
+    <thead class="bg-gray-300">
+        <tr >
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">image</th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">Name</th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">nbr products</th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">products</th>
+            <th class="px-5 py-3 border-b-2 border-gray-400 text-center text-base font-bold text-gray-700 uppercase tracking-wider">Action</th>
+        </tr>
+    </thead>
+    
+    <tbody class="bg-white divide-y divide-gray-200">
+        @for (category of categories; track $index)
+     {
+        <tr class="border-b hover:bg-slate-400 bg-gray-100 ">
+            <td class="px-6 py-4 whitespace-nowrap text-center">
+                <img src="./assets/images/{{category.img_name}}" alt="Description" class="w-28 h-28 mx-auto">
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-center">{{category.name_cat}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-center">{{category.products.length}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-center">
+                <select class="form-select block w-full mt-1">
+                    <option *ngFor="let product of category.products" [value]="product.name_prod">{{product.name_prod}}</option>
+                </select>
+            </td>
+            <td  class="px-6 py-4 whitespace-nowrap text-center">
+                <button  class="px-4 py-2 font-bold text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
+                <button (click)="openDeleteCategory(category.name_cat,category.idCat)" class="ml-2 px-4 py-2 font-bold text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
+            </td>
+        </tr>
+     }
+    </tbody>
+</table>
+<app-add-category
+    *ngIf="showAddCategory"
+    (categoryAdded)="onCategoryAdded($event)"
+    (closePopup)="closeAddCategory()">
+</app-add-category>
+<app-delete-category
+*ngIf="showDeleteCategory"
+(closePupUp)="closeAddCategory()"
+(confirmDeleteCategory)="onCategotyDeleted($event)"
+[selectedCategory]="selectedCategoryName"
+[selectedCategoryId]="selectedCategoryId">
+
+</app-delete-category>

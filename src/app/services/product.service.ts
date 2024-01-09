@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product} from '../models/product.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environment';
 
 @Injectable({
@@ -50,5 +50,17 @@ export class ProductService {
     };
 
     return this.http.post(`${this.apiUrl}/product/update`, product, httpOptions);
+  }
+
+  nbrProducts():Observable<number>{
+    return this.http.get<number>(`${this.apiUrl}/products/nbr`);
+  }
+
+  //synch mabin info w prod
+  private productChangeSubject = new Subject<void>();
+  productChanged$ = this.productChangeSubject.asObservable();
+
+  notifyProductChange() {
+    this.productChangeSubject.next();
   }
 }

@@ -19,5 +19,12 @@ getAllOrdersByUserId(id:number):Observable<Order[]>{
   return this.http.get<Order[]>(`${this.apiUrl}/user/${id}`)
 }
 
+getTotalOrders():Observable<number>{
+  return this.http.get<number>(`${this.apiUrl}/orders/count`)
+}
+getOrdersMoney():Observable<number>{
+  return this.http.get<number>(`${this.apiUrl}/orders/money`)
+}
+
 
 }

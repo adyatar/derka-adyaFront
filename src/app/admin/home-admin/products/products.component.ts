@@ -54,6 +54,7 @@ export class ProductsComponent implements OnInit {
     this.showDeleteConfirmation = false;
     this.showAddProduct=false;
     this.showUpdate=false;
+    this.getAllProducts();
   }
   onDeleteConfirmed(productId: number) {
     console.log("eeeeeeee"+productId);
@@ -61,6 +62,8 @@ export class ProductsComponent implements OnInit {
       next: (response) => {
         console.log('Product deleted successfully', response);
         this.getAllProducts();
+        //synch
+        this.productService.notifyProductChange();
         // Update your UI or product list as necessary
       },
       error: (error) => {
@@ -74,6 +77,8 @@ export class ProductsComponent implements OnInit {
     this.productService.addProduct(product).subscribe({
       next: (response) => {
         console.log('Product added successfully:', response);
+         //synch
+         this.productService.notifyProductChange();
         this.getAllProducts();
         this.onClosePopup();
       },
